@@ -15,12 +15,12 @@
     {{!-- Fin --}}
 
     {{!-- Seccion Eventos. --}}
-    <div class="px-4">
+    <div class="mx-4">
         <h4 class="font-italic font-weight-bold">Ultimos eventos <i class="fas fa-calendar-alt"></i></h4>
-        <ol class="list-unstyled mb-0">
+        <ol class="list-unstyled">
             {{#each ultimos3}}
-            <li>
-                <div class="card text-white bg-primary mb-3 rounded" style="max-width: 18rem;">
+            <li class="">
+                <div class="card text-white bg-primary mb-3 rounded">
                     <div class="card-header text-center">{{titulo}}</div>
                     <div class="card-body bg-light text-center text-dark">
                         <h5 class="card-title limit-line text-uppercase limit-line2">{{fechaFormat}}</h5>
