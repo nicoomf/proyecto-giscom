@@ -7,7 +7,7 @@ uploadController = {};
 
 uploadController.renderUpload = async (req, res) => {
     const imagenes = await Image.find();
-    res.render('admin/general/subirimg', { imagenes });
+    res.render('admin/general/subirImg', { imagenes });
 }
 
 uploadController.saveUpload = async (req, res) => {
