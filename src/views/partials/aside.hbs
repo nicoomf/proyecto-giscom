@@ -1,8 +1,8 @@
 {{!-- Seccion sobre nosotros. --}}
-<aside class="col-md-4 blog-sidebar">
-    <div class="px-4 mb-4 rounded">
+<aside class="col-lg-4 blog-sidebar">
+    <div class="mb-4 rounded">
         <h4 class="font-italic font-weight-bold">Sobre nosotros <i class="fas fa-users"></i></h4>
-        <p>La problemática científica de este grupo se refiere al estudio del tratamiento de
+        <p class="pr-3">La problemática científica de este grupo se refiere al estudio del tratamiento de
             datos,
             la
             interoperabilidad de equipos y la toma de decisiones basada en inteligencia artificial...</p>
@@ -15,11 +15,11 @@
     {{!-- Fin --}}
 
     {{!-- Seccion Eventos. --}}
-    <div class="mx-4">
+    <div>
         <h4 class="font-italic font-weight-bold">Ultimos eventos <i class="fas fa-calendar-alt"></i></h4>
-        <ol class="list-unstyled">
+        <ol class="list-unstyled row">
             {{#each ultimos3}}
-            <li class="">
+            <li class="col-md-6 col-lg-12 text-center">
                 <div class="card text-white bg-primary mb-3 rounded">
                     <div class="card-header text-center">{{titulo}}</div>
                     <div class="card-body bg-light text-center text-dark">

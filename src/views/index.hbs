@@ -43,20 +43,20 @@
 
     <main role="main" class="container">
         <div class="row">
-            <div class="col-md-8 blog-main">
-                <h3 class="pb-4 mb-1 ml-3 font-italic border-bottom font-weight-bold">
+            <div class="col-lg-8 blog-main">
+                <h3 class="pb-4 mb-1 font-italic border-bottom font-weight-bold">
                     Publicaciones recientes
                 </h3>
 
                 {{!-- Inicio publicaciones principales --}}
                 {{#each public2}}
                 <div
-                    class="card mb-3 ml-3 row no-gutters border border-primary rounded overflow-hidden flex-md-row h-md-250 position-relative">
+                    class="card mb-3 row no-gutters border border-primary rounded overflow-hidden flex-md-row h-md-250 position-relative">
                     <div class="card-body">
                         <div class="blog-post">
-                            <h2 class="blog-post-title"><a
+                            <h2 class="blog-post-title text-center text-lg-left"><a
                                     href="/actividades/publicaciones/{{id}}">{{titulo}}</a></h2>
-                            <p class="blog-post-meta">{{creado}} &nbsp;
+                            <p class="blog-post-meta text-center text-lg-left">{{creado}} &nbsp;
                                 <a href="/actividades/publicaciones?autor={{autor}}"><i class="fas fa-user"></i>
                                     {{autor}}</a> &nbsp; | <a href="/actividades/publicaciones?categoria={{categoria}}"
                                     class="badge barge-pill badge-warning rounded">{{categoria}}</a>
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 {{/each}}
-                <a href='/actividades/publicaciones' class='btn btn-primary mb-3 ml-3 text-center d-block'>
+                <a href='/actividades/publicaciones' class='btn btn-primary mb-3 text-center d-block'>
                     Ver todas las publicaciones
                 </a>
             </div><!-- Fin publicaciones principales. -->
