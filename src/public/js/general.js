@@ -1,5 +1,6 @@
 // TEXT AREA TRANSFORMADO A EDITOR DE TEXTO.
 $(document).ready(function () {
+  
   $("#summernote").summernote({
     placeholder: "Escriba su publicacion aqui...",
     tabsize: 2,
@@ -160,6 +161,7 @@ $("#btnAddCategoria").click(function () {
   const categ = document.createElement("option");
   categ.textContent = categoria;
   categ.value = categoria;
+  categ.selected = true;
   selectOptions.appendChild(categ);
 
   $.ajax({

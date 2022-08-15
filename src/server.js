@@ -11,14 +11,18 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 
+const { randomNameArchivo } = require('./helpers/libs.js');
 
-// Multer
-// const storage = multer.diskStorage({
-//     destination: path.join(__dirname, 'public/uploads'),
-//     filename: (req, file, cb) => {
-//         cb(null, file.originalname);
-//     }
-// })
+const nombreArch = randomNameArchivo();
+
+// nombreArch + path.extname(file.originalname)
+
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, 'public/uploads'),
+    filename: (req, file, cb) => {
+        cb(null, file.originalname );
+    }
+})
 
 // Initializations:
 const app = express();
@@ -35,9 +39,8 @@ app.engine('.hbs', exphbs({
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
 app.set('view engine', '.hbs');
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-
+app.use(bodyParser.urlencoded({ extended: false, limit: '25mb' }))
+app.use(bodyParser.json({limit: '25mb'}))
 
 // Middlewares:
 app.use(morgan('dev'));
@@ -51,10 +54,12 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Multer
 app.use(multer({
-    // storage: storage,
-    dest: path.join(__dirname, 'public/uploads/temp') 
-}).single('image')); 
+    storage: storage,
+    dest: path.join(__dirname, 'public/uploads')
+}).single('archivo'));
 
 
 // Global Variables:
@@ -70,8 +75,8 @@ app.use((req, res, next) => {
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/admin.routes'));
 app.use(require('./routes/equipo.routes'));
-app.use(require('./routes/upload.routes'));
 app.use(require('./routes/activ.routes'));
+// app.use(require('./routes/upload.routes'));
 
 // Static Files:
 app.use(express.static(path.join(__dirname, 'public')));

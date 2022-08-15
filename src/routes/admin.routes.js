@@ -18,9 +18,10 @@ router.post('/admin/signin', adminController.signIn);
 router.get('/admin/logout', auth.isAuthenticated, adminController.logOut);
 router.get('/admin/panel', auth.isAuthenticated, adminController.renderPanel);
 
-// Subir imagenes:
+// Subir archivos:
 router.get('/admin/subir-imagen', auth.isAuthenticated, uploadController.renderUpload);
-router.post('/admin/subir-imagen/save', auth.isAuthenticated, uploadController.saveUpload);
+router.post('/admin/upload', auth.isAuthenticated, uploadController.saveUpload);
+// router.post('/admin/subir-imagen/save', auth.isAuthenticated, uploadController.saveUpload);
 
 // Admin Seccion de Equipo:
 // Investigadores:

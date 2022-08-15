@@ -1,7 +1,7 @@
 const investController = {}
 
 const Invest = require('../models/Investigadores')
-const Image = require('../models/Image')
+// const Image = require('../models/Image')
 const { randomName } = require('../helpers/libs')
 
 investController.renderInvest = async (req, res) => {
@@ -15,8 +15,8 @@ investController.renderAdminInvest = async (req, res) => {
 }
 
 investController.renderInvestForm = async (req, res) => {
-  const fotos = await Image.find()
-  res.render('admin/equipo/nuevo-invest', { fotos })
+  // const fotos = await Image.find()
+  res.render('admin/equipo/nuevo-invest')
 }
 
 investController.createInvest = async (req, res) => {
@@ -53,8 +53,8 @@ investController.createInvest = async (req, res) => {
 
 investController.renderEditInvest = async (req, res) => {
   const invest = await Invest.findById(req.params.id)
-  const fotos = await Image.find()
-  res.render('admin/equipo/edit-invest', { invest, fotos })
+  // const fotos = await Image.find()
+  res.render('admin/equipo/edit-invest', { invest })
 }
 
 investController.updateInvest = async (req, res) => {

@@ -5,9 +5,7 @@
 
         <div class="admin-container w-100 container">
             <div class="head-admin-container m-3">
-                <h1 class="title">Menu de imagenes</h1>
-                {{!-- <a href="/admin/nuevo-invest"><button class="btn btn-primary">Agregar Investigador</button></a>
-                --}}
+                <h1 class="title">Menu de archivos</h1>
             </div>
 
             <div id="content" class="d-block">
@@ -15,20 +13,16 @@
                     <div class="col-lg mx-auto">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Subir nueva imagen</h3>
+                                <h3>Subir nuevo archivo</h3>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/subir-imagen/save" method="POST" enctype="multipart/form-data">
+                                <form action="/admin/upload" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" name="image" class="custom-file">
+                                                <input type="file" name="archivo" class="custom-file">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="titulo">Titulo de la imagen:</label>
-                                        <input type="text" name="titulo" class="form-control" placeholder="Titulo de la imagen" required>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-primary btn-block" type="submit">Subir imagen</button>
@@ -45,7 +39,7 @@
                             <tr>
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <th>Titulo de la imagen</th>
+                                        <th>Titulo del archivo</th>
                                     </div>
                                     <div class="col-md-4">
                                         <th width="40px"></th>
@@ -54,10 +48,10 @@
                                 </div>
                             </tr>
                         </thead>
-                        <tbody>
-                            {{#each imagenes}}
+                        {{!-- <tbody>
+                            {{#each archivos}}
                             <tr>
-                                <td>{{title}}</td>
+                                <td>{{filename}}</td>
                                 <td>
                                     <div class="d-flex">
                                         <button type="button" class="btn btn-sm btn-danger btn-block">Eliminar</button>
@@ -65,19 +59,23 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{idmodal}}">Visualizar</button>
-                                        
+                                        <button type="button" class="btn btn-sm btn-primary btn-block"
+                                            data-toggle="modal" data-target="#{{modal@index}}">Visualizar</button>
+
                                         <div class="modal-container">
-                                            <div class="modal fade" tabindex="-1" id="{{idmodal}}">
+                                            <div class="modal fade" tabindex="-1" id="{{modal@index}}">
                                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">{{title}}</h5>
-                                                             <button class="close" data-dismiss="modal">&times;</button>
+                                                            <h5 class="modal-title">{{filename}}</h5>
+                                                            <button class="close" data-dismiss="modal">&times;</button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="container text-center">
-                                                                <img class="img-fluid figure-img" width="auto" height="500px" style="max-width: 790px; max-height: 500px" src="/uploads/{{filename}}" alt="Imagen de {{title}}">
+                                                                <img class="img-fluid figure-img" width="auto"
+                                                                    height="500px"
+                                                                    style="max-width: 790px; max-height: 500px"
+                                                                    src="/uploads/{{filename}}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -88,7 +86,7 @@
                                 </td>
                             </tr>
                             {{/each}}
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
 

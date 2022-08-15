@@ -1,7 +1,7 @@
 const ayudController = {};
 
 const Ayud = require("../models/Ayudantes");
-const Image = require('../models/Image');
+// const Image = require('../models/Image');
 const Invest = require('../models/Investigadores');
 const { randomName } = require('../helpers/libs');
 
