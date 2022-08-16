@@ -4,6 +4,7 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 
 const publicacionSchema = new Schema({
     titulo: {type: String, required: true},
+    breveDescrip: {type: String, required: true},
     descripcion: {type: String, required: true},
     url: {type: String, required: true},
     creado: {type: String},

@@ -102,7 +102,7 @@ activController.createPublic = async (req, res) => {
       if (urls.length > 0) {
         savePublic();
       } else {
-        const { titulo, descripcion, autor, categoria } = req.body;
+        const { titulo, descripcion, autor, categoria, breveDescrip } = req.body;
         const url = publicUrl;
         const creado = format(new Date(), "dd/MM/yyyy");
         // console.log(creado);
@@ -113,6 +113,7 @@ activController.createPublic = async (req, res) => {
           creado,
           autor,
           categoria,
+          breveDescrip
         });
         // console.log(newPublic);
         await newPublic.save();
@@ -135,12 +136,13 @@ activController.renderEditPublic = async (req, res) => {
 };
 
 activController.updatePublic = async (req, res) => {
-  const { titulo, descripcion, autor, categoria } = req.body;
+  const { titulo, descripcion, autor, categoria, breveDescrip } = req.body;
   await Public.findByIdAndUpdate(req.params.id, {
     titulo,
     descripcion,
     autor,
     categoria,
+    breveDescrip
   });
   res.redirect("/admin/publicaciones");
 };
