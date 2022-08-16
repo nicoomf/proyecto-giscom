@@ -55,6 +55,8 @@ $(document).ready(function () {
   $(document).on("change", "#fotoPerfil", function () {
     const image = document.querySelector("#fotoPerfil").files[0];
 
+    $("#btnCargarImg").removeClass("d-none");
+
     var defaultName = "user_default.png";
 
     if (!image) {

@@ -69,8 +69,10 @@ $(document).ready(function () {
   $(document).on("change", "#fotoPerfilEdit", function () {
     const image = document.querySelector("#fotoPerfilEdit").files[0];
 
+    $("#btnCargarImgEdit").removeClass("d-none");
+
     var defaultNameEdit = $("#defaultNameEdit").val().toString();
-    console.log(defaultNameEdit);
+    // console.log(defaultNameEdit);
 
     if (!image) {
       let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -217,7 +219,7 @@ $(document).ready(function () {
       $("#massageErrorEdit").append(massage);
     } else {
       var json = `{"nombre": "${nombre}","departamento": "${departamento}","titulos": ${titulos},"areas": ${areas},"email": "${email}","numero": "${numero}", "imgUrl": "${imgUrl}"}`;
-      console.log(json);
+      // console.log(json);
 
       var id = $("#id").val();
       // console.log(id);

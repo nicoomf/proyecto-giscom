@@ -1,7 +1,6 @@
 const ayudController = {};
 
 const Ayud = require("../models/Ayudantes");
-// const Image = require('../models/Image');
 const Invest = require('../models/Investigadores');
 const { randomName } = require('../helpers/libs');
 
@@ -16,9 +15,8 @@ ayudController.renderAdminAyud = async (req, res) => {
 };
 
 ayudController.renderAyudForm = async (req, res) => {
-  const fotos = await Image.find();
   const invest = await Invest.find();
-  res.render("admin/equipo/nuevo-ayud", { fotos, invest });
+  res.render("admin/equipo/nuevo-ayud", { invest });
 };
 
 ayudController.createAyud = async (req, res) => {
@@ -45,9 +43,8 @@ ayudController.createAyud = async (req, res) => {
 
 ayudController.renderEditAyud = async (req, res) => {
   const ayud = await Ayud.findById(req.params.id);
-  const image = await Image.find();
   const invest = await Invest.find();
-  res.render("admin/equipo/edit-ayud", { ayud, image, invest });
+  res.render("admin/equipo/edit-ayud", { ayud, invest });
 };
 
 ayudController.updateAyud = async (req, res) => {
