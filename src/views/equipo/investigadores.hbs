@@ -1,68 +1,72 @@
-<div class="container pt-3">
+<div class="container bg-light pt-4">
     <div class="row">
         {{#each invest}}
-        <div class="col-md-6">
-            <div class="card shadow card-invest mb-4">
-                <div class="card-body d-flex investigador">
-                    <div class="row">
-                        <div class="col-md-4 mx-auto my-auto">
-                            <img src="/uploads/{{imgUrl}}" alt="Foto de perfil de {{nombre}}"
-                                class="img-fluid img-thumbnail">
-                        </div>
-                        <div class="col-md-8">
-                            <h4>{{nombre}}</h4>
-                            <h6>{{departamento}}</h6>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <a class="link" href="mailto:{{email}}">{{email}}</a>
-                                    <p>{{numero}}</p>
-                                </div>
-                                <div class="col-md-4 d-flex align-items-end">
-                                    <button type="button" class="btn btn-primary btn-sm flex-end" data-toggle="modal"
-                                        data-target="#{{idmodal}}">Ver más</button>
+        <div class="col-lg-6">
 
-                                    <div class="modal-container">
-                                        <div class="modal fade" tabindex="-1" id="{{idmodal}}">
-                                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">{{nombre}}</h4>
-                                                        <button class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
-                                                    <div class="modal-body investigadorModal">
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <img src="/uploads/{{imgUrl}}"
-                                                                            alt="Foto de perfil de {{nombre}}"
-                                                                            class="img-fluid img-thumbnail">
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <h6 class="mt-2">{{departamento}}</h6>
-                                                                        <a class="link"
-                                                                            href="mailto:{{email}}">{{email}}</a>
-                                                                        <p>{{numero}}</p>
-                                                                    </div>
+            <div class="card mb-4 border border-primary rounded">
+                <div class="card-header text-center">
+                    <h5 class="card-title m-0 font-weight-bold">{{nombre}}</h5>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-md-4 col-lg-5 col-xl-4">
+                            <img style="object-fit: cover; width: 150px; height: 150px; border-radius: 100%;"
+                                src="/uploads/{{imgUrl}}" alt="Foto de perfil de {{nombre}}"
+                                class="card-img-top mx-auto rounded d-block">
+                        </div>
+
+                        <div class="col-md-8 col-lg-7 col-xl-8 row text-center mx-0">
+                            <h6 class="col-12 dptoI">{{departamento}}</h6>
+                            <a class="link col-12" href="mailto:{{email}}">{{email}}</a>
+                            <p class="col-12">{{numero}}</p>
+                            <div class="col align-self-end">
+                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
+                                    data-target="#{{idmodal}}">Ver más</button>
+
+                                <div class="modal-container">
+                                    <div class="modal fade" tabindex="-1" id="{{idmodal}}">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title font-weight-bold">{{nombre}}</h4>
+                                                    <button class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <div class="modal-body investigadorModal">
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <img src="/uploads/{{imgUrl}}"
+                                                                        alt="Foto de perfil de {{nombre}}"
+                                                                        class="img-fluid img-thumbnail">
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <h6 class="mt-2">{{departamento}}</h6>
+                                                                    <a class="link"
+                                                                        href="mailto:{{email}}">{{email}}</a>
+                                                                    <p>{{numero}}</p>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-8">
-                                                                <div class="container">
-                                                                    <h5>Antecedentes Academicos:</h5>
-                                                                    <ul class="list-group">
-                                                                        {{#each titulos}}
-                                                                        <li
-                                                                            class="list-group-item badge bg-primary text-wrap text-light">
-                                                                            {{this}}</li>
-                                                                        {{/each}}
-                                                                    </ul>
-                                                                    <h5>Areas principales de Investigación:</h5>
-                                                                    <ol class="text-left">
-                                                                        {{#each areas}}
-                                                                        <li>{{this}}</li>
-                                                                        {{/each}}
-                                                                    </ol>
-                                                                </div>
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <div class="container">
+                                                                <h5>Antecedentes Academicos:</h5>
+                                                                <ul class="list-group">
+                                                                    {{#each titulos}}
+                                                                    <li
+                                                                        class="list-group-item badge bg-primary text-wrap text-light">
+                                                                        {{this}}</li>
+                                                                    {{/each}}
+                                                                </ul>
+                                                                <h5 class="mt-4">Areas principales de Investigación:
+                                                                </h5>
+                                                                <ol class="text-left">
+                                                                    {{#each areas}}
+                                                                    <li>{{this}}</li>
+                                                                    {{/each}}
+                                                                </ol>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -73,6 +77,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

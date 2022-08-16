@@ -172,17 +172,23 @@ body {
   height: auto;
 }
 
-.investigador h4 {
-  font-weight: bold !important;
-  /* margin-bottom: 1rem; */
+@media (max-width: 767px) {
+  .dptoI {
+    margin-top: 15px;
+  }
 }
 
-.investigador h6 {
+/* .investigador h4 {
+  font-weight: bold !important;
+  margin-bottom: 1rem;
+} */
+
+/* .investigador h6 {
   font-weight: 600;
   margin-bottom: 1rem;
-}
+} */
 
-.investigador ul li {
+/* .investigador ul li {
   text-align: left;
   font-size: 12px;
 }
@@ -197,7 +203,7 @@ body {
 .investigador img {
   max-height: 155px;
   margin: 0 auto;
-}
+} */
 
 /* PANEL DE ADMINISTRACION */
 
