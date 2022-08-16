@@ -45,44 +45,44 @@ body {
   font-size: 20px;
 }
 
-.signIn {
+/* .signIn {
   margin-right: 10px !important;
   display: none;
-}
+} */
 
 @media (max-width: 1280px) {
-  .nav-item span {
+  /* .nav-item span {
     display: none !important;
-  }
+  } */
 
-  .p-5 {
+  /* .p-5 {
     padding: 10px 2px !important;
-  }
+  } */
 
-  .first {
+  /* .first {
     display: none !important;
-  }
+  } */
 
   .texto {
     display: none;
   }
 
-  .barraBusqueda {
+  /* .barraBusqueda {
     display: none !important;
-  }
+  } */
 
-  .mt-4 {
+  /* .mt-4 {
     margin-top: 0.5rem !important;
-  }
+  } */
 
-  .p-3 {
+  /* .p-3 {
     padding: 0 !important;
     padding-top: 5px !important;
-  }
+  } */
 
-  .signIn {
+  /* .signIn {
     display: inline-block !important;
-  }
+  } */
 }
 
 .texto p,

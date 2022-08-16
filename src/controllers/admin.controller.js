@@ -53,7 +53,7 @@ adminController.signIn = passport.authenticate('local', {
 adminController.logOut = (req, res) => {
     req.logout();
     req.flash('success_msg', 'Cerraste Sesión');
-    res.redirect('/');
+    res.redirect('/admin/signin');
 };
 
 adminController.renderPanel = (req, res) => {
