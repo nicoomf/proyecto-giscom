@@ -153,9 +153,15 @@ body {
   align-items: center !important;
 }
 
-.card-ayud {
-  height: 260px !important;
-  align-items: center !important;
+.cardAyud {
+  height: cover; 
+  min-height: 325px;
+}
+
+@media (min-width: 1199px) {
+  .cardAyud {
+    min-height: 280px;
+  }
 }
 
 /* INVESTIGADORES */
