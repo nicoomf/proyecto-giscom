@@ -1,14 +1,22 @@
-<div class="container fondoblanco">
-    <div class="blog-post py-4 px-4">
+<div class="container fondoblanco p-0">
+    <div class="card-header py-4">
+        <h5 class="m-0 font-weight-bold"><i class="fas fa-angle-double-right"></i> <a href="/actividades/publicaciones"
+                class="text-decoration-none text-dark font-weight-bold">Publicaciones</a> <i
+                class="fas fa-angle-right"></i> <a href="/actividades/publicaciones?categoria={{public.categoria}}"
+                class="badge barge-pill badge-primary rounded">{{public.categoria}}</a></h5>
+    </div>
+    <div class="blog-post p-4">
         <div class="flex-row text-center">
-            <div class="d-flex justify-content-center">
-                <h1 class="blog-post-title font-weight-bold text-center col-10">{{public.titulo}}</h1>
+            <div class="">
+                <h1 class="blog-post-title font-weight-bold text-center">{{public.titulo}}</h1>
+                <h4><a class="text-decoration-none" href="#">{{public.autor}}</a></h4>
+                <h4><i class="far fa-calendar-alt"></i> {{public.creado}}</h4>
             </div>
-            <h5><a href="/actividades/publicaciones?categoria={{public.categoria}}" class="badge barge-pill badge-primary rounded">{{public.categoria}}</a></h5>
         </div>
         <h3 class="font-weight-normal text-center mt-3"></h3>
-        <p class="m-3 text-justify">{{{public.descripcion}}}</p>
-        
+        {{!-- <p class="text-justify">{{public.breveDescrip}}</p> --}}
+        <div class="vr">{{{public.descripcion}}}</div>
+
 
     </div><!-- /.blog-post -->
 </div>

@@ -25,6 +25,12 @@
                                             placeholder="Titulo para la publicacion" value="{{public.titulo}}" required>
                                     </div>
                                     <div class="form-group">
+                                        <label for="breveDescrip">Descripcion:</label>
+                                        <textarea name="breveDescrip" id="breveDescrip" cols="30" rows="7"
+                                            class="form-control" maxlength="1000"
+                                            placeholder="Escriba aqui una breve introduccion a la publicación...">{{public.breveDescrip}}</textarea>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="autor">Autor:</label>
                                         <select class="custom-select form-control" id="autor">
                                             <option value="{{public.autor}}">{{public.autor}}</option>

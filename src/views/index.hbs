@@ -11,7 +11,7 @@
                                 {{titulo}}
                             </h3>
                             <div class='limit-line'>
-                                {{{descripcion}}}
+                                {{{breveDescrip}}}
                             </div>
                             <input type="hidden" id="idNovedad{{@index}}" value="{{id}}">
                             <input type="hidden" id="catNovedad{{@index}}" value="{{categoria}}">
@@ -52,17 +52,24 @@
                 {{#each public2}}
                 <div
                     class="card mb-3 row no-gutters border border-primary rounded overflow-hidden flex-md-row h-md-250 position-relative">
+                    <div class="card-header col-12 px-4">
+                        <h2 class="blog-post-title text-center text-lg-left">
+                            <a class="text-decoration-none font-weight-normal text-dark"
+                                href="/actividades/publicaciones/{{id}}">{{titulo}}</a>
+                        </h2>
+                    </div>
                     <div class="card-body">
                         <div class="blog-post">
-                            <h2 class="blog-post-title text-center text-lg-left"><a
-                                    href="/actividades/publicaciones/{{id}}">{{titulo}}</a></h2>
-                            <p class="blog-post-meta text-center text-lg-left">{{creado}} &nbsp;
-                                <a href="/actividades/publicaciones?autor={{autor}}"><i class="fas fa-user"></i>
-                                    {{autor}}</a> &nbsp; | <a href="/actividades/publicaciones?categoria={{categoria}}"
-                                    class="badge barge-pill badge-warning rounded">{{categoria}}</a>
+                            <p class="blog-post-meta text-center text-lg-left">
+                                <i class="far fa-calendar-alt"></i> {{creado}} &nbsp;
+                                <a href="/actividades/publicaciones?autor={{autor}}" class="text-decoration-none">
+                                    <i class="fas fa-user"></i> {{autor}}
+                                </a> &nbsp;
+                                <a href="/actividades/publicaciones?categoria={{categoria}}"
+                                class="badge barge-pill badge-secondary rounded">{{categoria}}</a>
                             </p>
                             <div class="limit-line my-3">
-                                {{{descripcion}}}
+                                {{{breveDescrip}}}
                             </div>
                             <a href='/actividades/publicaciones/{{id}}' class='btn btn-warning mb-1 btn-sm float-right'>
                                 Ver más...

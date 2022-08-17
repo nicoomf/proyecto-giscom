@@ -4,7 +4,7 @@ $(document).ready(function () {
   $("#summernote").summernote({
     placeholder: "Escriba su publicacion aqui...",
     tabsize: 2,
-    height: 300,
+    height: 800,
     lang: "es-ES",
     toolbar: [
       ["style", ["style"]],
@@ -34,6 +34,7 @@ $(document).ready(function () {
     var descripcion = `${$("#summernote").summernote("code")}`;
     var autor = $("#autor").val();
     var categoria = $("#categoria").val();
+    var breveDescrip = $("#breveDescrip").val();
 
     // var json = `{"titulo": "${titulo}","descripcion": "${descripcion}"}`
 
@@ -45,7 +46,7 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "/admin/save-public",
-      data: { titulo: titulo, descripcion: descripcion, autor: autor, categoria: categoria },
+      data: { titulo: titulo, descripcion: descripcion, autor: autor, categoria: categoria, breveDescrip: breveDescrip },
     });
 
     const redirect = () => {
@@ -61,7 +62,8 @@ $(document).ready(function () {
     var titulo = $("#titulo").val();
     var descripcion = `${$("#summernote").summernote("code")}`;
     var autor = $("#autor").val();
-    var categoria = $("#categoria").val();
+    var categoria = $("#categoria").val();    
+    var breveDescrip = $("#breveDescrip").val();
 
     // var json = `{"titulo": "${titulo}","descripcion": "${descripcion}"}`
 
@@ -75,7 +77,7 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: `/admin/edit-public/${id}?_method=PUT`,
-      data: { titulo: titulo, descripcion: descripcion, autor: autor, categoria:categoria },
+      data: { titulo: titulo, descripcion: descripcion, autor: autor, categoria: categoria, breveDescrip: breveDescrip },
       // contentType: 'application/json; charset=utf-8',
       // dataType: 'json'
     });
@@ -175,6 +177,8 @@ $("#btnAddCategoria").click(function () {
   $("#categoriaModal").val('');
   $("#cerrarModalCateg").click();
 });
+
+
 
 
 });

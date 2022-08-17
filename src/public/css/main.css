@@ -154,7 +154,7 @@ body {
 }
 
 .cardAyud {
-  height: cover; 
+  height: cover;
   min-height: 325px;
 }
 
@@ -262,7 +262,7 @@ body {
 }
 
 .slider {
-  background: url('/img/extra/bg-3.png');
+  background: url("/img/extra/bg-3.png");
   background-size: cover;
   background-position: center;
   height: 400px;
@@ -281,11 +281,11 @@ body {
 }
 
 .limit-line2 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
-    overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
 }
 
 .redes {
@@ -302,4 +302,24 @@ footer {
 
 .custom-file-label::after {
   content: "Seleccionar" !important;
+}
+
+@media (max-width: 767px) {
+  .vr p {
+    text-align: justify !important;
+  }
+
+  .vr p iframe,
+  .vr p object,
+  .vr p embed {
+    text-align: start !important;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .vr p img {
+    max-width: 100% !important;
+    text-align: start;
+  }
 }
