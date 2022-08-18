@@ -17,6 +17,7 @@ router.get('/admin/signin', adminController.renderSignInForm);
 router.post('/admin/signin', adminController.signIn);
 router.get('/admin/logout', auth.isAuthenticated, adminController.logOut);
 router.get('/admin/panel', auth.isAuthenticated, adminController.renderPanel);
+router.get('/admin/edit-admin/:id', auth.isAuthenticated, adminController.renderEditAdminForm);
 
 // Subir archivos:
 router.get('/admin/subir-imagen', auth.isAuthenticated, uploadController.renderUpload);
