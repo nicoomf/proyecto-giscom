@@ -112,4 +112,64 @@ $(document).ready(function () {
       });
     }
   }
+
+  $("#btn-SubsGeneral").click(function () {
+    var email = $("#emailNewsletter").val();
+
+    if (email.length !== 0) {
+      var expReg =
+        /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+      var esValido = expReg.test(email);
+
+      if (esValido == true) {
+        const json = `{"email":"${email}"}`;
+
+        $.ajax({
+          type: "POST",
+          url: `/subs/save-subs/`,
+          data: json,
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function () {
+            let massage = `<div class="alert alert-success alert-dismissible fade show text-left" role="alert">
+                  Te has suscrito!
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>`;
+            $("#massageErrorSubsGeneral").append(massage);
+            $("#emailNewsletter").val("");
+          },
+          error: function () {
+            let massage = `<div class="alert alert-danger alert-dismissible fade show text-left" role="alert">
+                  El email ingresado ya esta suscrito...
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>`;
+            $("#massageErrorSubsGeneral").append(massage);
+            $("#emailNewsletter").val("");
+          },
+        });
+      } else {
+        let massage = `<div class="alert alert-danger alert-dismissible fade show text-left" role="alert">
+                  El email ingresado no es valido...
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>`;
+        $("#massageErrorSubsGeneral").append(massage);
+        $("#emailNewsletter").val("");
+      }
+    } else {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show text-left" role="alert">
+                  Ingrese un email...
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>`;
+      $("#massageErrorSubsGeneral").append(massage);
+      $("#emailNewsletter").val("");
+    }
+  });
 });

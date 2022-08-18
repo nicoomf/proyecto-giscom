@@ -8,5 +8,6 @@ router.get('/nosotros', indexController.renderAbout);
 
 // Suscrpciones:
 router.put('/evento/save-subs/:id', subsController.addSubs);
+router.post('/subs/save-subs', subsController.addSubsGeneral);
 
 module.exports = router;

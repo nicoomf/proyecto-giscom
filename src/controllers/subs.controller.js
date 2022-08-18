@@ -18,4 +18,23 @@ subsController.addSubs = async (req, res) => {
     }
 };
 
+subsController.addSubsGeneral = async (req, res) => {
+    const { email, nombre, apellido } = req.body;
+
+    const subs = await Subs.find({ "email" : email });
+
+    // console.log(subs);
+
+    if (subs.length !== 0 ) {
+        console.log("El correo ya esta registrado en el newsletter...");
+        res.send(400);
+    } else {
+        // const newSubs = new Subs ({ nombre, apellido, email });
+        const newSubs = new Subs ({ email });
+        await newSubs.save();
+        res.send(200, {mensaje: "Subscriptor guardado!"});
+    }
+
+}
+
 module.exports = subsController;
