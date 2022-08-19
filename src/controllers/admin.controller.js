@@ -79,6 +79,11 @@ adminController.updateAdmin = async (req, res) => {
   }
 };
 
+adminController.deleteAdmin = async (req, res) => {
+  await Admin.findByIdAndDelete(req.params.id);
+  res.redirect('/admin/administradores');
+}
+
 adminController.renderSignInForm = (req, res) => {
   res.render("admin/signin");
 };

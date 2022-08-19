@@ -19,6 +19,7 @@ router.get('/admin/logout', auth.isAuthenticated, adminController.logOut);
 router.get('/admin/panel', auth.isAuthenticated, adminController.renderPanel);
 router.get('/admin/edit-admin/:id', auth.isAuthenticated, adminController.renderEditAdminForm);
 router.put('/admin/edit-admin/:id', auth.isAuthenticated, adminController.updateAdmin);
+router.delete('/admin/delete-admin/:id', auth.isAuthenticated, adminController.deleteAdmin);
 
 // Subir archivos:
 router.get('/admin/subir-imagen', auth.isAuthenticated, uploadController.renderUpload);
