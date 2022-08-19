@@ -4,6 +4,6 @@ const app = require('./server');
 require('./database');
 
 app.listen(app.get('port'), () => {
-    console.log('SERVIDOR EN PUERTO', app.get('port'));
+    console.log('SERVIDOR CONECTADO EN PUERTO', app.get('port'));
 });
 
