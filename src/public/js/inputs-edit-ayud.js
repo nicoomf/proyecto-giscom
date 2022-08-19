@@ -172,7 +172,7 @@ $(document).ready(function () {
     </div>`;
       $("#massageErrorAyudEdit").append(massage);
     } else {
-      var json = `{"nombre": "${nombre}","carrera": "${carrera}","proyecto": "${proyecto}","email": "${email}","imgUrl": "${imgUrl}","profesor": "${profesores}"}`;
+      var json = `{"nombre": "${nombre}","carrera": "${carrera}","proyecto": "${proyecto}","email": "${email}","imgUrl": "${imgUrl}","profesor": ${profesores}}`;
       console.log(json);
 
       var id = $("#id").val();
@@ -190,7 +190,9 @@ $(document).ready(function () {
         location.href = "/admin/ayudantes";
       };
 
-      redirect();
+      setTimeout(function () {
+        redirect();
+      }, 200);
     }
   });
 });

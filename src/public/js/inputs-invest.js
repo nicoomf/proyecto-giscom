@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  
   var arr_titulos = [];
   $("#agregarTitulo").click(function () {
     let titulo = $("#titulos").val();
@@ -208,7 +207,14 @@ $(document).ready(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function () {
-          location.href = "/admin/investigadores";
+          // location.href = "/admin/investigadores";
+          const redirect = () => {
+            location.href = "/admin/investigadores";
+          };
+
+          setTimeout(function () {
+            redirect();
+          }, 200);
         },
         failure: function (response) {
           response.alert(mensaje);

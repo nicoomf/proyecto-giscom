@@ -1,10 +1,9 @@
 // TEXT AREA TRANSFORMADO A EDITOR DE TEXTO.
 $(document).ready(function () {
-  
   $("#summernote").summernote({
     placeholder: "Escriba su publicacion aqui...",
     tabsize: 2,
-    height: 800,
+    height: 500,
     lang: "es-ES",
     toolbar: [
       ["style", ["style"]],
@@ -43,17 +42,61 @@ $(document).ready(function () {
     // console.log(descripcion);
     // console.log(autor);
 
-    $.ajax({
-      type: "POST",
-      url: "/admin/save-public",
-      data: { titulo: titulo, descripcion: descripcion, autor: autor, categoria: categoria, breveDescrip: breveDescrip },
-    });
+    if (autor == 1) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      Seleccione un autor
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`;
+      $("#massagePublicacionAutor").append(massage);
+    }
 
-    const redirect = () => {
-      location.href = "/admin/publicaciones";
-    };
+    if (categoria == 1) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      Seleccione una categoria
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`;
+      $("#massagePublicacionCateg").append(massage);
+    } else {
+      if (
+        titulo.length == 0 ||
+        breveDescrip.length == 0 ||
+        autor.length == 0 ||
+        categoria.length == 0 ||
+        descripcion.length == 0
+      ) {
+        let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Complete los campos obligatorios
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>`;
+        $("#massagePublicacion").append(massage);
+      } else {
+        $.ajax({
+          type: "POST",
+          url: "/admin/save-public",
+          data: {
+            titulo: titulo,
+            descripcion: descripcion,
+            autor: autor,
+            categoria: categoria,
+            breveDescrip: breveDescrip,
+          },
+        });
 
-    redirect();
+        const redirect = () => {
+          location.href = "/admin/publicaciones";
+        };
+
+        setTimeout(function () {
+          redirect();
+        }, 200);
+      }
+    }
   });
 
   // Guardar publicaciones editadas
@@ -62,7 +105,7 @@ $(document).ready(function () {
     var titulo = $("#titulo").val();
     var descripcion = `${$("#summernote").summernote("code")}`;
     var autor = $("#autor").val();
-    var categoria = $("#categoria").val();    
+    var categoria = $("#categoria").val();
     var breveDescrip = $("#breveDescrip").val();
 
     // var json = `{"titulo": "${titulo}","descripcion": "${descripcion}"}`
@@ -74,19 +117,63 @@ $(document).ready(function () {
 
     var id = $("#id").val();
 
-    $.ajax({
-      type: "POST",
-      url: `/admin/edit-public/${id}?_method=PUT`,
-      data: { titulo: titulo, descripcion: descripcion, autor: autor, categoria: categoria, breveDescrip: breveDescrip },
-      // contentType: 'application/json; charset=utf-8',
-      // dataType: 'json'
-    });
+    if (autor == 1) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      Seleccione un autor
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`;
+      $("#massagePublicacionAutor").append(massage);
+    }
 
-    const redirect = () => {
-      location.href = "/admin/publicaciones";
-    };
+    if (categoria == 1) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      Seleccione una categoria
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`;
+      $("#massagePublicacionCateg").append(massage);
+    } else {
+      if (
+        titulo.length == 0 ||
+        breveDescrip.length == 0 ||
+        autor.length == 0 ||
+        categoria.length == 0 ||
+        descripcion.length == 0
+      ) {
+        let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Complete los campos obligatorios
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>`;
+        $("#massagePublicacion").append(massage);
+      } else {
+        $.ajax({
+          type: "POST",
+          url: `/admin/edit-public/${id}?_method=PUT`,
+          data: {
+            titulo: titulo,
+            descripcion: descripcion,
+            autor: autor,
+            categoria: categoria,
+            breveDescrip: breveDescrip,
+          },
+          // contentType: 'application/json; charset=utf-8',
+          // dataType: 'json'
+        });
 
-    redirect();
+        const redirect = () => {
+          location.href = "/admin/publicaciones";
+        };
+
+        setTimeout(function () {
+          redirect();
+        }, 200);
+      }
+    }
   });
 
   // EVENTOS:
@@ -112,7 +199,9 @@ $(document).ready(function () {
       location.href = "/admin/eventos";
     };
 
-    redirect();
+    setTimeout(function () {
+      redirect();
+    }, 200);
   });
 
   $("#btn-guardarEditEvento").click(function () {
@@ -148,37 +237,35 @@ $(document).ready(function () {
       location.href = "/admin/eventos";
     };
 
-    redirect();
+    setTimeout(function () {
+      redirect();
+    }, 200);
   });
 
+  // slider active
+  $("#sliderItem0").addClass("active");
 
-// slider active
-$("#sliderItem0").addClass('active');
+  // btn Agregar categoria...
+  $("#btnAddCategoria").click(function () {
+    var categoria = $("#categoriaModal").val();
+    categoria = categoria[0].toUpperCase() + categoria.substring(1);
+    const selectOptions = document.getElementById("categoria");
+    const categ = document.createElement("option");
+    categ.textContent = categoria;
+    categ.value = categoria;
+    categ.selected = true;
+    selectOptions.appendChild(categ);
 
-// btn Agregar categoria...
-$("#btnAddCategoria").click(function () {
-  var categoria = $("#categoriaModal").val();
-  categoria = categoria[0].toUpperCase() + categoria.substring(1);
-  const selectOptions = document.getElementById("categoria");
-  const categ = document.createElement("option");
-  categ.textContent = categoria;
-  categ.value = categoria;
-  categ.selected = true;
-  selectOptions.appendChild(categ);
+    $.ajax({
+      type: "POST",
+      url: `/addCategoria`,
+      data: {
+        categoria: categoria,
+      },
+    });
 
-  $.ajax({
-    type: "POST",
-    url: `/addCategoria`,
-    data: {
-      categoria: categoria
-    },
+    $("#categoriaModal").val("");
+    $("#cerrarModalCateg").click();
   });
-
-  $("#categoriaModal").val('');
-  $("#cerrarModalCateg").click();
-});
-
-
-
 
 });

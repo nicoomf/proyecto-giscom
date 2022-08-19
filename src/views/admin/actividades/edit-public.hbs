@@ -20,18 +20,18 @@
                             <div class="card-body">
                                 <form action="" method="POST">
                                     <div class="form-group">
-                                        <label for="titulo">Titulo:</label>
+                                        <label for="titulo">Titulo: (*)</label>
                                         <input type="text" id="titulo" class="form-control" name="titulo"
                                             placeholder="Titulo para la publicacion" value="{{public.titulo}}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="breveDescrip">Descripcion:</label>
+                                        <label for="breveDescrip">Descripcion: (*)</label>
                                         <textarea name="breveDescrip" id="breveDescrip" cols="30" rows="7"
                                             class="form-control" maxlength="1000"
                                             placeholder="Escriba aqui una breve introduccion a la publicación...">{{public.breveDescrip}}</textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="autor">Autor:</label>
+                                        <label for="autor">Autor: (*)</label>
                                         <select class="custom-select form-control" id="autor">
                                             <option value="{{public.autor}}">{{public.autor}}</option>
                                             {{#each autores}}
@@ -39,7 +39,10 @@
                                             {{/each}}
                                         </select>
                                     </div>
-                                    <label for="categoria">Categoria:</label>
+                                    <div class="form-group mt-2" id="massagePublicacionAutor">
+
+                                    </div>
+                                    <label for="categoria">Categoria: (*)</label>
                                     <div class="input-group">
                                         <select class="custom-select form-control" id="categoria"
                                             aria-label="Example select with button addon">
@@ -84,13 +87,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group mt-2" id="massagePublicacionCateg">
+
+                                    </div>
 
                                     <div class="form-group mt-3">
-                                        <label for="editordata">Descripcion:</label>
+                                        <label for="editordata">Cuerpo de la publicacion: (*)</label>
                                         <textarea id="summernote" name="editordata" value=""></textarea>
                                     </div>
                                     <input type="hidden" id="descripcion" value="{{public.descripcion}}">
                                     <input type="hidden" id="id" value="{{public.id}}">
+                                    <div class="form-group mt-2" id="massagePublicacion">
+
+                                    </div>
                                     <button type="button" id="btn-guardarEditPublic"
                                         class="btn btn-primary btn-block">Guardar</button>
                                 </form>

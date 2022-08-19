@@ -236,6 +236,10 @@ $(document).ready(function () {
         location.href = "/admin/investigadores";
       };
 
+      setTimeout(function () {
+        redirect();
+      }, 200);
+
       redirect();
     }
   });

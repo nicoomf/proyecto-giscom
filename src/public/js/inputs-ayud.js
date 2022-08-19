@@ -181,7 +181,14 @@ $(document).ready(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function () {
-          location.href = "/admin/ayudantes";
+          // location.href = "/admin/ayudantes";
+          const redirect = () => {
+            location.href = "/admin/ayudantes";
+          };
+
+          setTimeout(function () {
+            redirect();
+          }, 200);
         },
         failure: function (response) {
           response.alert(mensaje);
