@@ -2,8 +2,13 @@ const adminController = {};
 
 const passport = require("passport");
 const { findById } = require("../models/Admin");
+const bcrypt = require('bcryptjs');
 
 const Admin = require("../models/Admin");
+
+// const matchPassword = async function(actualPassword, adminPassword) {
+//   return await bcrypt.compare(actualPassword, adminPassword);
+// };
 
 adminController.renderSignUpForm = (req, res) => {
   res.render("admin/signup");
@@ -48,14 +53,27 @@ adminController.renderEditAdminForm = async (req, res) => {
 };
 
 adminController.updateAdmin = async (req, res) => {
-  const { name, email, password, actualPassword } = req.body;
-  const errors = [];
-  const admin = Admin.findById(req.params.id);
+  const { password, actualPassword, email } = req.body;
+  const admin = await Admin.findOne({email});
+  console.log(admin.password);
 
-  const match = await admin.matchPassword(actualPassword);
+  const id = req.params.id;
+  console.log(id);
+
+  const match = await bcrypt.compare(actualPassword, admin.password);
 
   if (match) {
     console.log("la contraseña coincide...");
+
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(password, salt);
+
+    await Admin.findByIdAndUpdate(req.params.id, {
+      password: hashPassword
+    });
+
+    // res.redirect(`/admin/edit-admin/${id}`);
+    res.send(200, {mensaje: "contraseña actualizada"});
   } else {
     res.send(400);
   }
