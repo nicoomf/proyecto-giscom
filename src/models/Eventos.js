@@ -9,6 +9,7 @@ const eventoSchema = new Schema({
   creado: { type: String },
   url: { type: String, required: true },
   hora: { type: String },
+  breveDescrip: { type: String },
   subs: [
     {
       nombre: { type: String },
@@ -16,6 +17,8 @@ const eventoSchema = new Schema({
       email: { type: String}
     },
   ],
+},{
+  timestamps: true
 });
 
 eventoSchema.plugin(mongoosePaginate);

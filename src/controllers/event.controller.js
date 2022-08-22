@@ -20,7 +20,7 @@ eventController.renderAdminEventos = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const eventI = await Event.paginate(
     {},
-    { page, limit: 10, sort: { creado: -1 }}
+    { page, limit: 10, sort: { createdAt: -1 }}
   );
   const totalPages = [];
   for (let index = 0; index < eventI.totalPages; index++) {
@@ -43,7 +43,7 @@ eventController.createEvento = async (req, res) => {
       if (urls.length > 0) {
         saveEvent();
       } else {
-        const { titulo, descripcion, fecha, hora } = req.body;
+        const { titulo, descripcion, fecha, hora, breveDescrip } = req.body;
         const url = eventUrl;
         const creado = format(new Date(), "dd/MM/yyyy");
         const fechaArray = fecha.split("-");
@@ -60,6 +60,7 @@ eventController.createEvento = async (req, res) => {
           url,
           creado,
           hora,
+          breveDescrip
         });
         // console.log(newEvent);
         await newEvent.save();

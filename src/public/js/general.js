@@ -3,7 +3,7 @@ $(document).ready(function () {
   $("#summernote").summernote({
     placeholder: "Escriba su publicacion aqui...",
     tabsize: 2,
-    height: 500,
+    height: 350,
     lang: "es-ES",
     toolbar: [
       ["style", ["style"]],
@@ -26,8 +26,7 @@ $(document).ready(function () {
   var texto = $("#descripcion").val();
   $("#summernote").summernote("code", texto);
 
-  // Guardar publicaciones
-
+  // Guardar publicaciones:
   $("#btn-guardarPublic").click(function () {
     var titulo = $("#titulo").val();
     var descripcion = `${$("#summernote").summernote("code")}`;
@@ -176,34 +175,76 @@ $(document).ready(function () {
     }
   });
 
-  // EVENTOS:
-
+  // Eventos:
   $("#btn-guardarEvento").click(function () {
     var titulo = $("#titulo").val();
-    var descripcion = $("#descripcion").val();
+    var descripcion = `${$("#summernote").summernote("code")}`;
     var fecha = $("#fecha").val();
     var hora = $("#hora").val();
+    var breveDescrip = $("#breveDescrip").val();
 
-    $.ajax({
-      type: "POST",
-      url: "/admin/save-evento",
-      data: {
-        titulo: titulo,
-        descripcion: descripcion,
-        fecha: fecha,
-        hora: hora,
-      },
-    });
+    var json = `{"titulo": "${titulo}","descripcion": "${descripcion}","fecha": "${fecha}"},"hora": "${hora}","breveDescrip": "${breveDescrip}"}`;
 
-    const redirect = () => {
-      location.href = "/admin/eventos";
-    };
+    console.log(json);
 
-    setTimeout(function () {
-      redirect();
-    }, 200);
+    if (fecha == 0) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      Seleccione una fecha
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`;
+      $("#massageFechasEvento").append(massage);
+    }
+
+    if (hora == 0) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      Seleccione una hora
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`;
+      $("#massageFechasEvento").append(massage);
+    }
+
+    if (
+      titulo.length == 0 ||
+      descripcion.length == 0 ||
+      fecha.length == 0 ||
+      hora.length == 0 ||
+      breveDescrip.length == 0
+    ) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Complete los campos obligatorios (*)
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>`;
+      $("#massageEventos").append(massage);
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/admin/save-evento",
+        data: {
+          titulo: titulo,
+          descripcion: descripcion,
+          fecha: fecha,
+          hora: hora,
+          breveDescrip: breveDescrip,
+        },
+      });
+
+      const redirect = () => {
+        location.href = "/admin/eventos";
+      };
+
+      setTimeout(function () {
+        redirect();
+      }, 300);
+    }
   });
 
+  // Editar evento:
   $("#btn-guardarEditEvento").click(function () {
     var titulo = $("#titulo").val();
     var descripcion = $("#descripcion").val();
@@ -267,5 +308,4 @@ $(document).ready(function () {
     $("#categoriaModal").val("");
     $("#cerrarModalCateg").click();
   });
-
 });
