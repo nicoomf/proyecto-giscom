@@ -14,12 +14,12 @@
                 <div class="container w-100">
                     <table class="table table-hover">
                         <thead class="bg-primary text-light">
-                            <tr>
-                                <th width="30%">Titulo</th>
-                                <th width="20%">Fecha de Creacion</th>
-                                <th width="20%">Fecha del evento</th>
-                                <th width="10%">Hora</th>
-                                <th width="10%">Accion</th>
+                            <tr class="text-center">
+                                <th width="57%" class="text-left">Titulo</th>
+                                <th width="18%">Fecha de Creacion</th>
+                                <th width="18%">Fecha del evento</th>
+                                <th width="5%">Hora</th>
+                                <th width="20%">Opciones</th>
                                 {{!-- <th>Visualizar</th> --}}
                             </tr>
                         </thead>
@@ -27,11 +27,11 @@
                             {{#each event}}
                             <tr>
                                 <td>{{titulo}}</td>
-                                <td>{{creado}}</td>
-                                <td>{{fechaFormat}}</td>
-                                <td>{{hora}}</td>
+                                <td class="text-center">{{creado}}</td>
+                                <td class="text-center">{{fechaFormat}}</td>
+                                <td class="text-center">{{hora}}</td>
                                 <td>
-                                    <div class="d-flex">
+                                    <div class="d-flex text-center">
                                         <form action="/admin/edit-event/{{_id}}" method="PUT">
                                             <button type="submit" class="btn btn-primary btn-sm">
                                                 <i class="fas fa-pen lead"></i>
@@ -43,7 +43,7 @@
                                                 <i class="fas fa-trash-alt lead"></i>
                                             </button>
                                         </form>
-                                        <a href="#" class="btn btn-success btn-sm ml-2"><i
+                                        <a href="/actividades/eventos/{{_id}}" target="_blank" class="btn btn-success btn-sm ml-2"><i
                                                 class="fas fa-eye lead"></i></a>
                                         <a href="#" class="btn btn-warning btn-sm ml-2"><i
                                                 class="far fa-envelope lead"></i></a>

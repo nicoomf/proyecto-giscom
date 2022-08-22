@@ -76,11 +76,14 @@ eventController.createEvento = async (req, res) => {
 
 eventController.renderEditEvento = async (req, res) => {
   const event = await Event.findById(req.params.id);
-  res.render("admin/actividades/edit-evento", { event });
+  fechaFormat = event.fechaFormat;
+  var aux = fechaFormat.split("/");
+  fechaG = `${aux[2]}-${aux[1]}-${aux[0]}`;
+  res.render("admin/actividades/edit-evento", { event, fechaG });
 };
 
 eventController.updateEvent = async (req, res) => {
-  const { titulo, descripcion, fecha, hora } = req.body;
+  const { titulo, descripcion, fecha, hora, breveDescrip } = req.body;
   // const fechaFormat = fecha.split("-").join("/");
 
   if (fecha.length !== 0) {
@@ -93,6 +96,7 @@ eventController.updateEvent = async (req, res) => {
       descripcion,
       fechaFormat,
       hora,
+      breveDescrip
     });
     res.redirect("/admin/eventos");
   } else {

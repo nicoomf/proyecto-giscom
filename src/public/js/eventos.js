@@ -1,3 +1,5 @@
+// Aqui se ingresa la fecha minima que se puede asignar a un evento.
+
 var fechaMinima = new Date(
   new Date().getFullYear(),
   new Date().getMonth(),

@@ -183,9 +183,9 @@ $(document).ready(function () {
     var hora = $("#hora").val();
     var breveDescrip = $("#breveDescrip").val();
 
-    var json = `{"titulo": "${titulo}","descripcion": "${descripcion}","fecha": "${fecha}"},"hora": "${hora}","breveDescrip": "${breveDescrip}"}`;
+    // var json = `{"titulo": "${titulo}","descripcion": "${descripcion}","fecha": "${fecha}"},"hora": "${hora}","breveDescrip": "${breveDescrip}"}`;
 
-    console.log(json);
+    // console.log(json);
 
     if (fecha == 0) {
       let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -247,40 +247,72 @@ $(document).ready(function () {
   // Editar evento:
   $("#btn-guardarEditEvento").click(function () {
     var titulo = $("#titulo").val();
-    var descripcion = $("#descripcion").val();
+    var descripcion = `${$("#summernote").summernote("code")}`;
     var fecha = $("#fecha").val();
     var hora = $("#hora").val();
-    // var descripcion = `${$('#summernote').summernote('code')}`;
+    var breveDescrip = $("#breveDescrip").val();
 
-    // var json = `{"titulo": "${titulo}","descripcion": "${descripcion}"}`
+    // var json = `{"titulo": "${titulo}","descripcion": "${descripcion}","fecha": "${fecha}"},"hora": "${hora}","breveDescrip": "${breveDescrip}"}`;
 
     // console.log(json);
-    // console.log(titulo);
-    // console.log(descripcion);
-    // console.log("la fecha es: ", fecha);
 
-    var id = $("#id").val();
+    if (fecha == 0) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      Seleccione una fecha
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`;
+      $("#massageFechasEvento").append(massage);
+    }
 
-    $.ajax({
-      type: "POST",
-      url: `/admin/edit-event/${id}?_method=PUT`,
-      data: {
-        titulo: titulo,
-        descripcion: descripcion,
-        fecha: fecha,
-        hora: hora,
-      },
-      // contentType: 'application/json; charset=utf-8',
-      // dataType: 'json'
-    });
+    if (hora == 0) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      Seleccione una hora
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`;
+      $("#massageFechasEvento").append(massage);
+    }
 
-    const redirect = () => {
-      location.href = "/admin/eventos";
-    };
+    if (
+      titulo.length == 0 ||
+      descripcion.length == 0 ||
+      fecha.length == 0 ||
+      hora.length == 0 ||
+      breveDescrip.length == 0
+    ) {
+      let massage = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Complete los campos obligatorios (*)
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>`;
+      $("#massageEventos").append(massage);
+    } else {
+      var id = $("#id").val();
 
-    setTimeout(function () {
-      redirect();
-    }, 200);
+      $.ajax({
+        type: "POST",
+        url: `/admin/edit-event/${id}?_method=PUT`,
+        data: {
+          titulo: titulo,
+          descripcion: descripcion,
+          fecha: fecha,
+          hora: hora,
+          breveDescrip: breveDescrip,
+        },
+      });
+
+      const redirect = () => {
+        location.href = "/admin/eventos";
+      };
+
+      setTimeout(function () {
+        redirect();
+      }, 200);
+    }
   });
 
   // slider active
