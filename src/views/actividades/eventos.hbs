@@ -1,0 +1,51 @@
+<div class="container bg-light pt-4 min-vh-100">
+    {{!-- Eventos --}}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-lg-12 blog-main">
+                <h3 class="pb-4 mb-1 font-italic border-bottom font-weight-bold">
+                    Todos los eventos
+                </h3>
+                {{!-- Inicio de los eventos --}}
+                <div class="row">
+                    {{#each event}}
+                    <div class="col-md-6 col-lg-4 text-center">
+                        <div class="card text-white bg-primary mb-3 rounded">
+                            <div class="card-header text-center text-truncate">{{titulo}}</div>
+                            <div class="card-body bg-light text-center text-dark">
+                                <h5 class="card-title text-uppercase font-weight-bold">{{fechaFormat}}</h5>
+                                <p class="limit-line">{{breveDescrip}}</p>
+                                <a href="/actividades/eventos/{{id}}"><button type="button"
+                                        class="btn btn-primary btn-block">Ver más</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{!-- Botones de paginacion... --}}
+        <div id="paginacion" class="">
+            <input type="hidden" id="page" value="{{page}}">
+            <input type="hidden" id="ultPage" value="{{ultPage}}">
+            <input type="hidden" id="url" value="/actividades/eventos">
+            <nav>
+                <ul class="pagination justify-content-center rounded">
+                    <li class="page-item"><button class="btn btn-outline-primary rounded mx-1"
+                            id="btn-inicio">Inicio</button></li>
+                    <li class="page-item"><button class="btn btn-outline-primary rounded mx-1" id="btn-anterior"><i
+                                class="fas fa-angle-left"></i></button></li>
+                    {{#each totalPages}}
+                    <li class="page-item"><a href="/actividades/eventos?page={{this}}"
+                            class="btn btn-outline-primary rounded mx-1 d-none" id="btn{{this}}">{{this}}</a>
+                    </li>
+                    {{/each}}
+                    <li class="page-item"><button class="btn btn-outline-primary rounded mx-1" id="btn-siguiente"><i
+                                class="fas fa-angle-right"></i></button></li>
+                    <li class="page-item"><button class="btn btn-outline-primary rounded mx-1"
+                            id="btn-final">Final</button></li>
+                </ul>
+            </nav>
+        </div>
+    </main>
+</div>

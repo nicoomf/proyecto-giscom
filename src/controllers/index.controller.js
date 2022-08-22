@@ -2,6 +2,7 @@ const indexController = {};
 
 const Public = require("../models/Publicaciones");
 const Event = require("../models/Eventos");
+const mongoosePaginate = require("mongoose-paginate-v2");
 
 indexController.renderIndex = async (req, res) => {
   const public = await Public.find();
@@ -27,6 +28,15 @@ indexController.renderIndex = async (req, res) => {
 
   const novedades = [primero, publicUlt1, segundo, publicUlt2];
 
+  const proximosEventosI = await Event.paginate(
+    { vigente: true },
+    { page: 1, limit: 3, sort: { fecha: 1 } }
+  );
+  
+  const proximosEventos = proximosEventosI.docs;
+
+  // console.log(proximosEventos);
+
   res.render("index", {
     public,
     ultPublic,
@@ -34,6 +44,7 @@ indexController.renderIndex = async (req, res) => {
     public2,
     ultimos3,
     novedades,
+    proximosEventos
   });
 };
 

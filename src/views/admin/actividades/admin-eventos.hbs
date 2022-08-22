@@ -15,9 +15,9 @@
                     <table class="table table-hover">
                         <thead class="bg-primary text-light">
                             <tr class="text-center">
-                                <th width="57%" class="text-left">Titulo</th>
-                                <th width="18%">Fecha de Creacion</th>
-                                <th width="18%">Fecha del evento</th>
+                                <th width="45%" class="text-left">Titulo</th>
+                                <th width="15%">Fecha de Creacion</th>
+                                <th width="15%">Fecha del evento</th>
                                 <th width="5%">Hora</th>
                                 <th width="20%">Opciones</th>
                                 {{!-- <th>Visualizar</th> --}}
@@ -26,7 +26,7 @@
                         <tbody>
                             {{#each event}}
                             <tr>
-                                <td>{{titulo}}</td>
+                                <td class="">{{titulo}}</td>
                                 <td class="text-center">{{creado}}</td>
                                 <td class="text-center">{{fechaFormat}}</td>
                                 <td class="text-center">{{hora}}</td>

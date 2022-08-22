@@ -16,16 +16,16 @@
 
     {{!-- Seccion Eventos. --}}
     <div>
-        <h4 class="font-italic font-weight-bold">Ultimos eventos <i class="fas fa-calendar-alt"></i></h4>
+        <h4 class="font-italic font-weight-bold">Proximos eventos <i class="fas fa-calendar-alt"></i></h4>
         <ol class="list-unstyled row">
-            {{#each ultimos3}}
+            {{#each proximosEventos}}
             <li class="col-md-6 col-lg-12 text-center">
                 <div class="card text-white bg-primary mb-3 rounded">
-                    <div class="card-header text-center">{{titulo}}</div>
+                    <div class="card-header text-center text-truncate">{{titulo}}</div>
                     <div class="card-body bg-light text-center text-dark">
-                        <h5 class="card-title limit-line text-uppercase limit-line2">{{fechaFormat}}</h5>
-                        {{!-- <p class="card-text limit-line2">{{descripcion}}</p> --}}
-                        <button type="button" class="btn btn-primary mt-2" data-toggle="modal"
+                        <h5 class="card-title text-uppercase">{{fechaFormat}}</h5>
+                        <p class="limit-line">{{breveDescrip}}</p>
+                        <button type="button" class="btn btn-primary mt-2 btn-block" data-toggle="modal"
                             data-target="#{{url}}">Ver más</button>
 
                         {{!-- Modal para suscripcion al evento: --}}
@@ -33,7 +33,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h2 class="modal-title font-weight-bold limit-line2">{{titulo}}</h2>
+                                        <h2 class="modal-title font-weight-bold">{{titulo}}</h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                                             id="cerrarXModal{{@index}}">
                                             <span aria-hidden="true">&times;</span>
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <h3 class="font-weight-normal">Descripcion:</h3>
-                                        <p class="m-3 text-justify limit-line">{{{descripcion}}}</p>
+                                        <p class="m-3 text-justify">{{breveDescrip}}</p>
                                         <h3 class="font-weight-normal">Se realizará el: <div class="mb-1 text-muted">
                                                 {{fechaFormat}}
                                             </div>

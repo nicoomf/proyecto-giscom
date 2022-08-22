@@ -6,9 +6,18 @@ const { format } = require("date-fns");
 const mongoosePaginate = require("mongoose-paginate-v2");
 
 eventController.renderEventos = async (req, res) => {
-  const eventI = await Event.find();
-  const event = eventI.reverse();
-  res.render("actividades/eventos", { event });
+  const page = parseInt(req.query.page) || 1;
+  const eventI = await Event.paginate(
+    {},
+    { page, limit: 9, sort: { createdAt: -1 } }
+  );
+  const totalPages = [];
+  for (let index = 0; index < eventI.totalPages; index++) {
+    totalPages.push(index + 1);
+  }
+  const event = eventI.docs;
+  const ultPage = eventI.totalPages;
+  res.render("actividades/eventos", { event, totalPages, page, ultPage });
 };
 
 eventController.renderEvento = async (req, res) => {
@@ -20,7 +29,7 @@ eventController.renderAdminEventos = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const eventI = await Event.paginate(
     {},
-    { page, limit: 10, sort: { createdAt: -1 }}
+    { page, limit: 10, sort: { createdAt: -1 } }
   );
   const totalPages = [];
   for (let index = 0; index < eventI.totalPages; index++) {
@@ -28,7 +37,12 @@ eventController.renderAdminEventos = async (req, res) => {
   }
   const event = eventI.docs;
   const ultPage = eventI.totalPages;
-  res.render("admin/actividades/admin-eventos", { event, totalPages, page, ultPage });
+  res.render("admin/actividades/admin-eventos", {
+    event,
+    totalPages,
+    page,
+    ultPage,
+  });
 };
 
 eventController.renderNuevoEvento = (req, res) => {
@@ -49,20 +63,16 @@ eventController.createEvento = async (req, res) => {
         const fechaArray = fecha.split("-");
         const fechaInversa = fechaArray.reverse();
         const fechaFormat = fechaInversa.join("/");
-        // console.log(fecha);
-        // const fechaFormat = fecha.split("-").join("/");
-        // const fechaFormat = format(fecha, 'dd/MM/yyyy');
-        // console.log(fechaFormat);
         const newEvent = new Event({
           titulo,
           descripcion,
+          fecha,
           fechaFormat,
           url,
           creado,
           hora,
-          breveDescrip
+          breveDescrip,
         });
-        // console.log(newEvent);
         await newEvent.save();
         res.send({ mensaje: "ok" });
       }
@@ -84,19 +94,18 @@ eventController.renderEditEvento = async (req, res) => {
 
 eventController.updateEvent = async (req, res) => {
   const { titulo, descripcion, fecha, hora, breveDescrip } = req.body;
-  // const fechaFormat = fecha.split("-").join("/");
 
   if (fecha.length !== 0) {
     const fechaArray = fecha.split("-");
     const fechaInversa = fechaArray.reverse();
     const fechaFormat = fechaInversa.join("/");
-    // console.log("la fecha es: ", fecha);
     await Event.findByIdAndUpdate(req.params.id, {
       titulo,
       descripcion,
+      fecha,
       fechaFormat,
       hora,
-      breveDescrip
+      breveDescrip,
     });
     res.redirect("/admin/eventos");
   } else {

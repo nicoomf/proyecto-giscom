@@ -5,11 +5,13 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const eventoSchema = new Schema({
   titulo: { type: String, required: true },
   descripcion: { type: String, required: true },
+  fecha: { type: Date },
   fechaFormat: { type: String },
   creado: { type: String },
   url: { type: String, required: true },
   hora: { type: String },
   breveDescrip: { type: String },
+  vigente: { type: Boolean, default: true },
   subs: [
     {
       nombre: { type: String },

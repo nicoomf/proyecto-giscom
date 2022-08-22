@@ -288,6 +288,14 @@ body {
   overflow: hidden;
 }
 
+.limit-line3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
 .redes {
   font-size: 30px;
 }

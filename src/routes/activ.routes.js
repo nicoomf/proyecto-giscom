@@ -9,6 +9,7 @@ router.get('/actividades/publicaciones', activController.renderPublicaciones);
 router.get('/actividades/publicaciones/:id', activController.renderPublic);
 
 // Eventos:
+router.get('/actividades/eventos', eventController.renderEventos);
 router.get('/actividades/eventos/:id', eventController.renderEvento);
 
 
