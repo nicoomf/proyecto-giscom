@@ -106,6 +106,7 @@ eventController.updateEvent = async (req, res) => {
       fechaFormat,
       hora,
       breveDescrip,
+      vigente: true
     });
     res.redirect("/admin/eventos");
   } else {

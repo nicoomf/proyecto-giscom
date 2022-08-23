@@ -13,7 +13,7 @@ activController.renderPublicaciones = async (req, res) => {
   const categoria = req.query.categoria || 1;
   if (categoria != 1) {
     const publicI = await Public.paginate(
-      {categoria},
+      { categoria },
       { page, limit: 5, sort: { createdAt: -1 } }
     );
     const totalPages = [];
@@ -22,15 +22,18 @@ activController.renderPublicaciones = async (req, res) => {
     }
     const public = publicI.docs;
     const ultPage = publicI.totalPages;
-    // Ultimos 3 eventos para mostrar en inicio:
-    const event = await Event.find();
-    const primero = event[event.length - 1];
-    const segundo = event[event.length - 2];
-    const tercero = event[event.length - 3];
-    const ultimos3 = [primero, segundo, tercero];
+
+    // proximos eventos:
+    const proximosEventosI = await Event.paginate(
+      { vigente: true },
+      { page: 1, limit: 3, sort: { fecha: 1 } }
+    );
+
+    const proximosEventos = proximosEventosI.docs;
+
     res.render("actividades/publicaciones", {
       public,
-      ultimos3,
+      proximosEventos,
       totalPages,
       page,
       ultPage,
@@ -46,15 +49,18 @@ activController.renderPublicaciones = async (req, res) => {
     }
     const public = publicI.docs;
     const ultPage = publicI.totalPages;
-    // Ultimos 3 eventos para mostrar en inicio:
-    const event = await Event.find();
-    const primero = event[event.length - 1];
-    const segundo = event[event.length - 2];
-    const tercero = event[event.length - 3];
-    const ultimos3 = [primero, segundo, tercero];
+    
+    // proximos eventos:
+    const proximosEventosI = await Event.paginate(
+      { vigente: true },
+      { page: 1, limit: 3, sort: { fecha: 1 } }
+    );
+
+    const proximosEventos = proximosEventosI.docs;
+
     res.render("actividades/publicaciones", {
       public,
-      ultimos3,
+      proximosEventos,
       totalPages,
       page,
       ultPage,
@@ -102,7 +108,8 @@ activController.createPublic = async (req, res) => {
       if (urls.length > 0) {
         savePublic();
       } else {
-        const { titulo, descripcion, autor, categoria, breveDescrip } = req.body;
+        const { titulo, descripcion, autor, categoria, breveDescrip } =
+          req.body;
         const url = publicUrl;
         const creado = format(new Date(), "dd/MM/yyyy");
         // console.log(creado);
@@ -113,7 +120,7 @@ activController.createPublic = async (req, res) => {
           creado,
           autor,
           categoria,
-          breveDescrip
+          breveDescrip,
         });
         // console.log(newPublic);
         await newPublic.save();
@@ -142,7 +149,7 @@ activController.updatePublic = async (req, res) => {
     descripcion,
     autor,
     categoria,
-    breveDescrip
+    breveDescrip,
   });
   res.redirect("/admin/publicaciones");
 };
