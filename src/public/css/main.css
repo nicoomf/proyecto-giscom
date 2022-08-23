@@ -322,6 +322,16 @@ footer {
   .vr p embed {
     text-align: start !important;
     max-width: 100%;
+    max-height: 300px;
+  }
+
+  .vr div {
+    text-align: justify !important;
+  }
+
+  .vr div iframe {
+    text-align: start !important;
+    max-width: 100%;
   }
 }
 
@@ -330,4 +340,16 @@ footer {
     max-width: 100% !important;
     text-align: start;
   }
+
+  .vr div {
+    text-align: center !important;
+    /* text-align: justify !important; */
+  }
+
+  .vr div iframe {
+    /* text-align: start !important; */
+    max-width: 100%;
+    max-height: 300px;
+  }
+
 }

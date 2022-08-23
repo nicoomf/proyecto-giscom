@@ -341,8 +341,62 @@ $(document).ready(function () {
     $("#cerrarModalCateg").click();
   });
 
+  // mostrar un mensaje u otro de acuerdo a la fecha del evento:
 
-  
+  const vigente = $("#vigente").val();
+  const fecha = $("#fechaFormat").val();
 
+  console.log(vigente);
 
+  if (vigente == "true") {
+    let massage = `
+    <h3 class="font-weight-normal text-center mt-3">Se realizará el: <span class="mb-1 text-muted">
+    ${fecha} </span></h3>
+
+    <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="row mx-4">
+                    <div class="col-md-6 my-1">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text font-weight-bold" id="basic-addon1">Nombre</span>
+                            </div>
+                            <input type="text" class="form-control" id="nombreSub" name="nombre" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text font-weight-bold" id="basic-addon1">Apellido</span>
+                            </div>
+                            <input type="text" class="form-control" id="apellidoSub" name="apellido"
+                                placeholder="Apellido">
+                        </div>
+                    </div>
+                    <div class="col-md-12 my-1">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text font-weight-bold" id="basic-addon1">Email</span>
+                            </div>
+                            <input type="email" class="form-control" id="emailSub" name="email" placeholder="email@ejemplo.com">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-danger" id="btnSusEvento">Suscribirse</button>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group mt-2" id="card-massages">
+
+              </div>
+          </div>
+      </div>
+    
+
+    `;
+    $("#card-fechas").append(massage);
+  } else {
+    let massage = `<h3 class="font-weight-normal text-center mt-3">Se realizó el: <span class="mb-1 text-muted">
+    ${fecha} </span></h3>`;
+    $("#card-fechas").append(massage);
+  }
 });

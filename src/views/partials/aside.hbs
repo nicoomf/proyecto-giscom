@@ -19,6 +19,100 @@
         <h4 class="font-italic font-weight-bold">Proximos eventos <i class="fas fa-calendar-alt"></i></h4>
         <ol class="list-unstyled row">
             {{#each proximosEventos}}
+            {{#if @last}}
+            <li class="col-md-6 col-lg-12 text-center offset-md-3 offset-lg-0">
+                <div class="card text-white bg-primary mb-3 rounded">
+                    <div class="card-header text-center text-truncate">{{titulo}}</div>
+                    <div class="card-body bg-light text-center text-dark">
+                        <h5 class="card-title text-uppercase font-weight-bold">{{fechaFormat}}</h5>
+                        <p class="limit-line">{{breveDescrip}}</p>
+                        <button type="button" class="btn btn-primary mt-2 btn-block" data-toggle="modal"
+                            data-target="#{{url}}">Ver más</button>
+
+                        {{!-- Modal para suscripcion al evento: --}}
+                        <div class="modal fade" tabindex="-1" id="{{url}}">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title font-weight-bold">{{titulo}}</h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                            id="cerrarXModal{{@index}}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 class="font-weight-normal">Descripcion:</h3>
+                                        <p class="m-3 text-justify">{{breveDescrip}}</p>
+                                        <h3 class="font-weight-normal">Se realizará el: <div class="mb-1 text-muted">
+                                                {{fechaFormat}}
+                                            </div>
+                                        </h3>
+
+                                        <h2 class="font-weight-bold color-blue font-italic">¡Suscribete
+                                            aqui!
+                                        </h2>
+
+                                        <div class="row mt-3">
+                                            <div class="col-lg-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text font-weight-bold"
+                                                            id="basic-addon1">Nombre</span>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="nombreSus{{@index}}"
+                                                        placeholder="nombre" aria-label="Nombre del Suscriptor"
+                                                        aria-describedby="nombre del suscriptor" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text font-weight-bold"
+                                                            id="basic-addon1">Apellido</span>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="apellidoSus{{@index}}"
+                                                        placeholder="apellido" aria-label="Apellido del Suscriptor"
+                                                        aria-describedby="apellido del suscriptor" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group my-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text font-weight-bold"
+                                                    id="basic-addon1">Escribe tu email</span>
+                                            </div>
+                                            <input type="email" class="form-control" id="emailSus{{@index}}"
+                                                placeholder="email@ejemplo.com" aria-label="Email del usuario"
+                                                aria-describedby="btn-suscribirse" required>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-danger" type="submit"
+                                                    id="btn-suscribirse{{@index}}">Suscribirse</button>
+                                            </div>
+                                            <input type="hidden" id="idEvent{{@index}}" value="{{id}}">
+                                            <input type="hidden" id="idModal{{@index}}" value="{{url}}">
+                                        </div>
+                                        <div class="form-group mt-2" id="modalMassages">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secoundary" data-dismiss="modal"
+                                            id="cerrarModal{{@index}}">Cerrar</button>
+                                        <button type="button" id="btn-irEvent{{@index}}" class="btn btn-primary">Ver más
+                                            del
+                                            evento</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </li>
+            {{else}}
             <li class="col-md-6 col-lg-12 text-center">
                 <div class="card text-white bg-primary mb-3 rounded">
                     <div class="card-header text-center text-truncate">{{titulo}}</div>
@@ -91,6 +185,9 @@
                                             <input type="hidden" id="idEvent{{@index}}" value="{{id}}">
                                             <input type="hidden" id="idModal{{@index}}" value="{{url}}">
                                         </div>
+                                        <div class="form-group mt-2" id="modalMassages">
+
+                                        </div>
 
                                     </div>
                                     <div class="modal-footer">
@@ -108,6 +205,7 @@
                     </div>
                 </div>
             </li>
+            {{/if}}
             {{/each}}
         </ol>
         <a href='/actividades/eventos' class='btn btn-primary mb-4 text-center d-block'>

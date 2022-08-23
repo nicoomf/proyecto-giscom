@@ -1,25 +1,33 @@
-<div class="container fondoblanco">
-    <div class="blog-post py-4 px-4">
+<div class="container fondoblanco p-0">
+
+    <div class="card-header py-4">
+        <h5 class="m-0 font-weight-bold"><i class="fas fa-angle-double-right"></i> <a href="/actividades/eventos"
+                class="text-decoration-none text-dark font-weight-bold">Eventos</a> <i class="fas fa-angle-down"></i>
+        </h5>
+    </div>
+
+    <div class="blog-post p-4">
         <div class="flex-row text-center">
-            <div class="d-flex justify-content-center">
-                <h1 class="blog-post-title font-weight-bold text-center col-10">{{event.titulo}}</h1>
+            <div class="mb-4">
+                <h1 class="blog-post-title font-weight-bold text-center mx-md-4">{{event.titulo}}</h1>
             </div>
         </div>
 
-        <h3 id="vigente" class="font-weight-normal text-center mt-3">Se realizó el: <span class="mb-1 text-muted">
-                {{event.fechaFormat}}
-            </span>
-        </h3>
+        <input type="hidden" value="{{event.vigente}}" id="vigente">
+        <input type="hidden" value="{{event.fechaFormat}}" id="fechaFormat">
+        <input type="hidden" value="{{event.id}}" id="idEvento">
 
-        <h3 id="noVigente" class="font-weight-normal text-center mt-3">Se realizará el: <span class="mb-1 text-muted">
-                {{event.fechaFormat}}
-            </span>
-        </h3>
+        <div class="text-center">
+            {{event.breveDescrip}}
+        </div>
 
+        <div class="text-center" id="card-fechas">
+
+        </div>       
 
         <h3 class="font-weight-normal text-center mt-3">Descripcion:</h3>
-        <p class="m-3 text-justify">{{{event.descripcion}}}</p>
-        
+        <div class="vr mx-lg-4 my-4">{{{event.descripcion}}}</div>
+
 
     </div><!-- /.blog-post -->
 </div>

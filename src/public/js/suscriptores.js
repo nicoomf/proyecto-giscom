@@ -1,4 +1,53 @@
 $(document).ready(function () {
+  $("#btnSusEvento").click(function () {
+    var email = $("#emailSub").val();
+    var id = $("#idEvento").val();
+    var nombre = $("#nombreSub").val();
+    var apellido = $("#apellidoSub").val();
+
+    if (email.length == 0 || nombre.length == 0 || apellido.length == 0) {
+      let massage = `<div class="alert alert-danger text-left alert-dismissible fade show" role="alert">
+                    Complete los campos
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>`;
+      $("#card-massages").append(massage);
+    } else {
+      if (email.length !== 0) {
+        var expReg =
+          /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+        var esValido = expReg.test(email);
+
+        if (esValido == true) {
+          const json = `{"nombre":"${nombre}","apellido":"${apellido}","email":"${email}","id":"${id}"}`;
+
+          // console.log(json);
+
+          $.ajax({
+            type: "POST",
+            url: `/evento/save-subs/:${id}?_method=PUT`,
+            data: json,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+          });
+
+          $("#emailSub").val("");
+          $("#nombreSub").val("");
+          $("#apellidoSub").val("");
+        } else {
+          let massage = `<div class="alert alert-danger text-left alert-dismissible fade show" role="alert">
+                    El email ingresado no es valido
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>`;
+          $("#card-massages").append(massage);
+        }
+      }
+    }
+  });
+
   $("#btn-suscribirse").click(function () {
     var email = $("#emailSus").val();
     var id = $("#idEvent").val();
@@ -56,35 +105,57 @@ $(document).ready(function () {
   });
 
   function validarYEnviar(email, id, nombre, apellido, index) {
-    if (email.length !== 0) {
-      var expReg =
-        /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-      var esValido = expReg.test(email);
+    if (email.length == 0 || nombre.length == 0 || apellido.length == 0) {
+      let massage = `<div class="alert alert-danger text-left alert-dismissible fade show" role="alert">
+                    Complete los campos
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>`;
+      $("#modalMassages").append(massage);
+    } else {
+      if (email.length !== 0) {
+        var expReg =
+          /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+        var esValido = expReg.test(email);
 
-      if (esValido == true) {
-        const json = `{"nombre":"${nombre}","apellido":"${apellido}","email":"${email}","id":"${id}"}`;
+        if (esValido == true) {
+          const json = `{"nombre":"${nombre}","apellido":"${apellido}","email":"${email}","id":"${id}"}`;
 
-        // console.log(json);
+          // console.log(json);
 
-        $.ajax({
-          type: "POST",
-          url: `/evento/save-subs/:${id}?_method=PUT`,
-          data: json,
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-        });
+          $.ajax({
+            type: "POST",
+            url: `/evento/save-subs/:${id}?_method=PUT`,
+            data: json,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+          });
 
-        if (index < 3) {
-          $(`#cerrarModal${index}`).click();
-          $(`#cerrarXModal${index}`).click();
+          if (index < 3) {
+            $(`#cerrarModal${index}`).click();
+            $(`#cerrarXModal${index}`).click();
+          } else {
+            $(`#cerrarModal`).click();
+          }
         } else {
-          $(`#cerrarModal`).click();
+          let massage = `<div class="alert alert-danger text-left alert-dismissible fade show" role="alert">
+                    El email ingresado no es valido
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>`;
+          $("#modalMassages").append(massage);
         }
       } else {
-        alert("Ingrese un email valido");
+        let massage = `<div class="alert alert-danger text-left alert-dismissible fade show" role="alert">
+                    El email ingresado no es valido
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>`;
+        $("#modalMassages").append(massage);
       }
-    } else {
-      alert("Ingrese un email valido");
     }
   }
 
