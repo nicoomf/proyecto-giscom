@@ -43,7 +43,6 @@ indexController.renderIndex = async (req, res) => {
       );
 
       if (fechaHoy > eventI[index].fecha) {
-        console.log("la fecha es anterior...");
         await Event.findByIdAndUpdate(eventI[index]._id, {
           vigente: false,
         });
