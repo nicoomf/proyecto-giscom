@@ -6,15 +6,19 @@
             </div>
         </div>
 
-        <h3 class="font-weight-normal text-center mt-3">Se realizará el: <span class="mb-1 text-muted">
+        <h3 id="vigente" class="font-weight-normal text-center mt-3">Se realizó el: <span class="mb-1 text-muted">
                 {{event.fechaFormat}}
             </span>
         </h3>
 
+        <h3 id="noVigente" class="font-weight-normal text-center mt-3">Se realizará el: <span class="mb-1 text-muted">
+                {{event.fechaFormat}}
+            </span>
+        </h3>
+
+
         <h3 class="font-weight-normal text-center mt-3">Descripcion:</h3>
         <p class="m-3 text-justify">{{{event.descripcion}}}</p>
-
-        <h3 class="font-weight-normal text-center mt-3">Ubicacion:</h3>
         
 
     </div><!-- /.blog-post -->

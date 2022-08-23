@@ -340,4 +340,9 @@ $(document).ready(function () {
     $("#categoriaModal").val("");
     $("#cerrarModalCateg").click();
   });
+
+
+  
+
+
 });
