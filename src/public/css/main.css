@@ -15,18 +15,12 @@ body {
   min-height: 100%;
 }
 
-.fondoblanco {
-  background: #ffffff;
-}
-
+ /* Estilos para el logo de gISCOM */
 .logo {
   width: 30%;
 }
 
-/* .bg-dark {
-    background-color: rgb(0, 119, 255) !important;
-} */
-
+/* Estilos de la barra de navegacion */
 .navbar-brand {
   padding-top: 0;
   padding-bottom: 0;
@@ -45,46 +39,16 @@ body {
   font-size: 20px;
 }
 
-/* .signIn {
-  margin-right: 10px !important;
-  display: none;
-} */
-
 @media (max-width: 1280px) {
-  /* .nav-item span {
-    display: none !important;
-  } */
-
-  /* .p-5 {
-    padding: 10px 2px !important;
-  } */
-
-  /* .first {
-    display: none !important;
-  } */
-
+  
+  /* Aqui se borra el texto lateral del logo en resoluciones menores a 1280px */
   .texto {
-    display: none;
+    display: none; 
   }
 
-  /* .barraBusqueda {
-    display: none !important;
-  } */
-
-  /* .mt-4 {
-    margin-top: 0.5rem !important;
-  } */
-
-  /* .p-3 {
-    padding: 0 !important;
-    padding-top: 5px !important;
-  } */
-
-  /* .signIn {
-    display: inline-block !important;
-  } */
 }
 
+/* Estilos del texto lateral del logo */
 .texto p,
 .texto h4 {
   margin: 0;
@@ -102,16 +66,8 @@ body {
   font-weight: 600;
 }
 
-/* .btn-outline-success {
-    color: #ffffff !important;
-    border-color: var(--color1) !important;
-    background-color: var(--color1Hover) !important;
-}
 
-.btn-outline-success:hover {
-    background-color: var(--color1Hover) !important;
-} */
-
+/* Estilos para la pestaña "Nosotros" */
 .Nosotros {
   margin: 0 auto;
 }
@@ -128,6 +84,7 @@ body {
   font-weight: 400;
 }
 
+/* Estos son los estilos para el logo de gISCOM y UBB en la pestaña de "Nosotros" */
 .logos {
   display: flex;
   justify-content: space-evenly;
@@ -148,11 +105,7 @@ body {
   }
 }
 
-.card-invest {
-  height: 200px !important;
-  align-items: center !important;
-}
-
+/* Estilos para las cards de Ayudantes */
 .cardAyud {
   height: cover;
   min-height: 325px;
@@ -164,7 +117,7 @@ body {
   }
 }
 
-/* INVESTIGADORES */
+/* Estilos para las cards y modals de investigadores */
 .investigador {
   text-align: start;
 }
@@ -183,33 +136,6 @@ body {
     margin-top: 15px;
   }
 }
-
-/* .investigador h4 {
-  font-weight: bold !important;
-  margin-bottom: 1rem;
-} */
-
-/* .investigador h6 {
-  font-weight: 600;
-  margin-bottom: 1rem;
-} */
-
-/* .investigador ul li {
-  text-align: left;
-  font-size: 12px;
-}
-
-.investigador h5 {
-  margin: 1rem 0;
-  font-weight: 600;
-}
-.investigador ol li {
-  font-size: 14px;
-}
-.investigador img {
-  max-height: 155px;
-  margin: 0 auto;
-} */
 
 /* PANEL DE ADMINISTRACION */
 
@@ -261,6 +187,7 @@ body {
   align-items: center;
 }
 
+
 .slider {
   background: url("/img/extra/bg-3.png");
   background-size: cover;
@@ -272,6 +199,8 @@ body {
   max-width: 900px;
 }
 
+
+/* Limites de parrafos o textos. */
 .limit-line {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -312,6 +241,7 @@ footer {
   content: "Seleccionar" !important;
 }
 
+/* VIDEOS, IMAGENES Y IFRAMES RESPONSIVOS */
 @media (max-width: 767px) {
   .vr p {
     text-align: justify !important;
