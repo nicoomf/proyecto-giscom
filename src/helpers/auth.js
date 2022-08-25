@@ -20,7 +20,7 @@ helpers.updateExpirados = async (req, res, next) => {
         new Date().getFullYear(),
         new Date().getMonth(),
         new Date().getDate(),
-        -04,
+        00,
         00
       );
       console.log(fechaHoy);
