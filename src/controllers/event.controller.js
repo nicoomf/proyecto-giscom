@@ -66,9 +66,13 @@ eventController.createEvento = async (req, res) => {
 
         const newFecha = new Date(fecha);
         const newHora = hora.split(":");
-        const fechaHora = new Date(newFecha.getFullYear(), newFecha.getMonth(), newFecha.getDate(), newHora[0], newHora[1]);
-        console.log(newFecha);
-        console.log(fechaHora);
+        const fechaHora = new Date(
+          newFecha.getFullYear(),
+          newFecha.getMonth(),
+          newFecha.getDate(),
+          newHora[0],
+          newHora[1]
+        );
 
         const newEvent = new Event({
           titulo,
@@ -106,14 +110,25 @@ eventController.updateEvent = async (req, res) => {
     const fechaArray = fecha.split("-");
     const fechaInversa = fechaArray.reverse();
     const fechaFormat = fechaInversa.join("/");
+
+    const newFecha = new Date(fecha);
+    const newHora = hora.split(":");
+    const fechaHora = new Date(
+      newFecha.getFullYear(),
+      newFecha.getMonth(),
+      newFecha.getDate(),
+      newHora[0],
+      newHora[1]
+    );
+
     await Event.findByIdAndUpdate(req.params.id, {
       titulo,
       descripcion,
-      fecha,
+      fecha: fechaHora,
       fechaFormat,
       hora,
       breveDescrip,
-      vigente: true
+      vigente: true,
     });
     res.redirect("/admin/eventos");
   } else {
