@@ -63,10 +63,17 @@ eventController.createEvento = async (req, res) => {
         const fechaArray = fecha.split("-");
         const fechaInversa = fechaArray.reverse();
         const fechaFormat = fechaInversa.join("/");
+
+        const newFecha = new Date(fecha);
+        const newHora = hora.split(":");
+        const fechaHora = new Date(newFecha.getFullYear(), newFecha.getMonth(), newFecha.getDate(), newHora[0], newHora[1]);
+        console.log(newFecha);
+        console.log(fechaHora);
+
         const newEvent = new Event({
           titulo,
           descripcion,
-          fecha,
+          fecha: fechaHora,
           fechaFormat,
           url,
           creado,
