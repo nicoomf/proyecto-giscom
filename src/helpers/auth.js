@@ -19,12 +19,14 @@ helpers.updateExpirados = async (req, res, next) => {
   console.log("entro!");
   // console.log(eventI);
   for (let index = 0; index < eventI.length; index++) {
+    const horaEvent = eventI[index].hora;
+    const hora = horaEvent.split(":");
     var fechaHoy = new Date(
       new Date().getFullYear(),
       new Date().getMonth(),
       new Date().getDate(),
-      23,
-      59
+      hora[0],
+      hora[1]
     );
 
     if (fechaHoy >= eventI[index].fecha) {
