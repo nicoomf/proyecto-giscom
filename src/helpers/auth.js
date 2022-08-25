@@ -19,17 +19,20 @@ helpers.updateExpirados = async (req, res, next) => {
       var fechaHoy = new Date(
         new Date().getFullYear(),
         new Date().getMonth(),
-        new Date().getDate()
+        new Date().getDate(),
+        -04,
+        00
       );
+      console.log(fechaHoy);
   
-      if (fechaHoy > eventI[index].fecha) {
+      if (fechaHoy >= eventI[index].fecha) {
         await Event.findByIdAndUpdate(eventI[index]._id, {
           vigente: false,
         });
+        console.log("Updateado!");
       }
   
     //   res.send("Updateado...");
-    console.log("Updateado!");
     }
     return next();
   }
