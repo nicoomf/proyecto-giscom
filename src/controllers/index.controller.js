@@ -3,7 +3,6 @@ const indexController = {};
 const Public = require("../models/Publicaciones");
 const Event = require("../models/Eventos");
 const mongoosePaginate = require("mongoose-paginate-v2");
-const e = require("connect-flash");
 
 indexController.renderIndex = async (req, res) => {
   const public = await Public.find();
@@ -31,26 +30,6 @@ indexController.renderIndex = async (req, res) => {
   const ultimos3 = [primero, segundo, tercero];
 
   const novedades = [primero, publicUlt1, segundo, publicUlt2];
-
-  // Funcion para expirar los eventos ya realizados...
-  const updateExpirados = async function () {
-    const eventI = await Event.find({ vigente: true });
-    for (let index = 0; index < eventI.length; index++) {
-      var fechaHoy = new Date(
-        new Date().getFullYear(),
-        new Date().getMonth(),
-        new Date().getDate()
-      );
-
-      if (fechaHoy > eventI[index].fecha) {
-        await Event.findByIdAndUpdate(eventI[index]._id, {
-          vigente: false,
-        });
-      }
-    }
-  };
-
-  updateExpirados();
 
   // proximos eventos:
   const proximosEventosI = await Event.paginate(

@@ -3,7 +3,10 @@ const indexController = require('../controllers/index.controller');
 const subsController = require('../controllers/subs.controller');
 const router = express.Router();
 
-router.get('/', indexController.renderIndex);
+const auth = require('../helpers/auth');
+
+router.get('/', auth.updateExpirados, indexController.renderIndex);
+// router.post('/', indexController.updateExpirados);
 router.get('/nosotros', indexController.renderAbout);
 
 // Suscrpciones:
