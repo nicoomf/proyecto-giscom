@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const mongodb_uri = 'mongodb+srv://nicoomf:nicoomf@cluster0.bvpzl.mongodb.net/Giscom?retryWrites=true&w=majority';
+// console.log(process.env.DB_URI);
+
+const mongodb_uri = process.env.DB_URI;
 
 mongoose.connect(mongodb_uri, {
     useCreateIndex: true,
