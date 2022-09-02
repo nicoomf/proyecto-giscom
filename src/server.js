@@ -10,6 +10,8 @@ const session = require('express-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+require('dotenv').config();
+// console.log(process.env); 
 
 const { randomNameArchivo } = require('./helpers/libs.js');
 

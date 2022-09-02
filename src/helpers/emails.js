@@ -4,7 +4,8 @@ const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
-const accountTransport = require("../account_transport.json");
+require("dotenv").config();
+// console.log(process.env);
 
 const templateInicio = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -189,13 +190,13 @@ const templateFinal = `</td>
 </html>`;
 
 const oauth2Client = new OAuth2(
-  accountTransport.auth.clientId,
-  accountTransport.auth.clientSecret,
+  process.env.SM_CLIENTID,
+  process.env.SM_CLIENTSECRET,
   "https://developers.google.com/oauthplayground"
 );
 
 oauth2Client.setCredentials({
-  refresh_token: accountTransport.auth.refreshToken,
+  refresh_token: process.env.SM_REFRESHTOKEN,
 });
 
 const createTrans = async () => {
@@ -203,11 +204,11 @@ const createTrans = async () => {
   const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      type: accountTransport.auth.type,
-      user: accountTransport.auth.user,
-      clientId: accountTransport.auth.clientId,
-      clientSecret: accountTransport.auth.clientSecret,
-      refreshToken: accountTransport.auth.refreshToken,
+      type: process.env.SM_TYPE,
+      user: process.env.SM_USER,
+      clientId: process.env.SM_CLIENTID,
+      clientSecret: process.env.SM_CLIENTSECRET,
+      refreshToken: process.env.SM_REFRESHTOKEN,
       accessToken: accessToken,
     },
   });
@@ -241,7 +242,7 @@ emails.sendMailEvent = async (correo, nombre, apellido, evento) => {
   //   Mensaje del email
   const mensaje = `${nombre}!, te informamos que te acabas de suscribir al Evento: "${evento}" <br> ¡Por lo que te recordaremos cuando se acerque la fecha de realización!`;
   const cuerpo = `<div><h2 style="color: #fff;">${titulo}</h2><p style="color: #fff;">${mensaje}</p></div>`;
-  
+
   const transporter = createTrans();
   const info = (await transporter).sendMail({
     from: "Grupo de Investigacion gISCOM <giscom-app@outlook.com>",
