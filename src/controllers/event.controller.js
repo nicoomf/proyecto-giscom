@@ -1,9 +1,11 @@
 const eventController = {};
 
 const Event = require("../models/Eventos");
+const Subs = require('../models/Subs');
 const { randomName, randomUrl } = require("../helpers/libs");
 const { format } = require("date-fns");
 const mongoosePaginate = require("mongoose-paginate-v2");
+const emailer = require('../helpers/emails');
 
 eventController.renderEventos = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
@@ -54,6 +56,18 @@ eventController.createEvento = async (req, res) => {
     const saveEvent = async () => {
       const eventUrl = randomUrl();
       const urls = await Event.find({ url: eventUrl });
+      const correosI = await Subs.find();
+      // console.log(correosI);
+      var correos = ``;
+      for (let i = 0; i < correosI.length; i++) {
+        const correo = correosI[i].email;
+        if (correos == "") {
+          correos = `${correo}`
+        } else {
+          correos = `${correos}, ${correo}`
+        }
+      }
+      // console.log(correos);
       if (urls.length > 0) {
         saveEvent();
       } else {
@@ -85,6 +99,7 @@ eventController.createEvento = async (req, res) => {
           breveDescrip,
         });
         await newEvent.save();
+        emailer.sendMailNewEvent(correos,titulo,fechaFormat);
         res.send({ mensaje: "ok" });
       }
     };

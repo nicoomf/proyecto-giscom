@@ -252,4 +252,36 @@ emails.sendMailEvent = async (correo, nombre, apellido, evento) => {
   });
 };
 
+emails.sendMailNewPublic = async (correos, categoria, autor) => {
+  // Titulo para el mensaje del email
+  const titulo2 = `¡Se acaba de publicar una ${categoria}!`;
+  //   Mensaje del email
+  const mensaje = `Estimad@!, te informamos que <b>${autor}</b> acaba de publicar una <b>${categoria}</b><br><br><a style="color: #fff;" href="https://giscom.herokuapp.com/actividades/publicaciones?categoria=${categoria}">Ir a Giscom</a>`;
+  const cuerpo = `<div><h2 style="color: #fff;">${titulo2}</h2><p style="color: #fff;">${mensaje}</p></div>`;
+
+  const transporter = createTrans();
+  const info = (await transporter).sendMail({
+    from: "Grupo de Investigacion gISCOM <giscom-app@outlook.com>",
+    to: `${correos}`,
+    subject: `Nueva publicación de ${categoria} en nuestro sitio web!`,
+    html: `${templateInicio} ${cuerpo} ${templateFinal}`,
+  });
+};
+
+emails.sendMailNewEvent = async (correos, titulo, fecha) => {
+  // Titulo para el mensaje del email
+  const titulo2 = `¡Se acaba de publicar nuevo Evento!`;
+  //   Mensaje del email
+  const mensaje = `Estimad@!, te informamos que nuestros investigadores han fijado un nuevo <b>Evento</b><br><br>"${titulo}"<br><br>Para el: ${fecha}<br><br><a style="color: #fff;" href="https://giscom.herokuapp.com/actividades/eventos">Ir a Giscom</a>`;
+  const cuerpo = `<div><h2 style="color: #fff;">${titulo2}</h2><p style="color: #fff;">${mensaje}</p></div>`;
+
+  const transporter = createTrans();
+  const info = (await transporter).sendMail({
+    from: "Grupo de Investigacion gISCOM <giscom-app@outlook.com>",
+    to: `${correos}`,
+    subject: `Tenemos nuevo Evento fijado en nuestro sitio web!`,
+    html: `${templateInicio} ${cuerpo} ${templateFinal}`,
+  });
+};
+
 module.exports = emails;

@@ -16,7 +16,7 @@ helpers.isAuthenticated = (req, res, next) => {
 // Updatea constantemente los eventos expirados...
 helpers.updateExpirados = async (req, res, next) => {
   const eventI = await Event.find({ vigente: true });
-  console.log("entro!");
+  // console.log("entro!");
   // console.log(eventI);
   for (let index = 0; index < eventI.length; index++) {
     const horaEvent = eventI[index].hora;
@@ -33,11 +33,11 @@ helpers.updateExpirados = async (req, res, next) => {
       await Event.findByIdAndUpdate(eventI[index]._id, {
         vigente: false,
       });
-      console.log("Updateado!");
+      // console.log("Updateado!");
     }
     //   res.send("Updateado...");
   }
-  console.log(fechaHoy);
+  // console.log(fechaHoy);
   return next();
 };
 

@@ -4,9 +4,11 @@ const Public = require("../models/Publicaciones");
 const Invest = require("../models/Investigadores");
 const Event = require("../models/Eventos");
 const Categ = require("../models/Categorias");
+const Subs = require('../models/Subs');
 const { randomName, randomUrl } = require("../helpers/libs");
 const format = require("date-fns/format");
 const mongoosePaginate = require("mongoose-paginate-v2");
+const emailer = require('../helpers/emails');
 
 activController.renderPublicaciones = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
@@ -105,6 +107,18 @@ activController.createPublic = async (req, res) => {
     const savePublic = async () => {
       const publicUrl = randomUrl();
       const urls = await Public.find({ url: publicUrl });
+      const correosI = await Subs.find();
+      // console.log(correosI);
+      var correos = ``;
+      for (let i = 0; i < correosI.length; i++) {
+        const correo = correosI[i].email;
+        if (correos == "") {
+          correos = `${correo}`
+        } else {
+          correos = `${correos}, ${correo}`
+        }
+      }
+      // console.log(correos);
       if (urls.length > 0) {
         savePublic();
       } else {
@@ -124,6 +138,7 @@ activController.createPublic = async (req, res) => {
         });
         // console.log(newPublic);
         await newPublic.save();
+        emailer.sendMailNewPublic(correos, categoria, autor);
         res.send({ mensaje: "ok" });
       }
     };
