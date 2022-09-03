@@ -196,4 +196,32 @@ eventController.deleteEvent = async (req, res) => {
   res.redirect("/admin/eventos");
 };
 
+eventController.sendMailSubs = async (req, res) => {
+  const { id, mensaje } = req.body;
+
+  const evento = await Event.findById(id).exec();
+  const subsEvent = evento.subs;
+  const titulo = evento.titulo;
+
+  var correos = ``;
+
+  for (let i = 0; i < subsEvent.length; i++) {
+    const correo = subsEvent[i].email;
+    if (correos == "") {
+      correos = `${correo}`;
+    } else {
+      correos = `${correos}, ${correo}`;
+    }
+  }
+
+  // console.log(correos);
+  // console.log(id);
+  // console.log(mensaje);
+  // console.log(titulo);
+
+  if (correos != "") {
+    emailer.sendMailForSubs(correos, mensaje, titulo);
+  }
+};
+
 module.exports = eventController;

@@ -216,7 +216,7 @@ const createTrans = async () => {
   return transport;
 };
 
-emails.sendMail = async (correo) => {
+emails.sendMailSub = async (correo) => {
   // Titulo para el mensaje del email
   const titulo = `¡Hola!`;
   //   Mensaje del email
@@ -236,7 +236,7 @@ emails.sendMail = async (correo) => {
   return;
 };
 
-emails.sendMailEvent = async (correo, nombre, apellido, evento) => {
+emails.sendMailSubEvent = async (correo, nombre, apellido, evento) => {
   // Titulo para el mensaje del email
   const titulo = `¡Te Suscribiste!`;
   //   Mensaje del email
@@ -296,6 +296,22 @@ emails.sendMailUpdateEvent = async (correos, titulo, fecha, hora, id) => {
     from: "Grupo de Investigacion gISCOM <giscom-app@outlook.com>",
     to: `${correos}`,
     subject: `Se cambio la fecha del Evento!`,
+    html: `${templateInicio} ${cuerpo} ${templateFinal}`,
+  });
+};
+
+emails.sendMailForSubs = async (correos, mensaje, evento) => {
+  // Titulo para el mensaje del email
+  const titulo2 = `Estimad@!`;
+  //   Mensaje del email
+  const mensaje2 = `<br>${mensaje}`;
+  const cuerpo = `<div><h2 style="color: #fff;">${titulo2}</h2><p style="color: #fff;">${mensaje2}</p></div>`;
+
+  const transporter = createTrans();
+  const info = (await transporter).sendMail({
+    from: "Grupo de Investigacion gISCOM <giscom-app@outlook.com>",
+    to: `${correos}`,
+    subject: `[Giscom] ${evento}`,
     html: `${templateInicio} ${cuerpo} ${templateFinal}`,
   });
 };

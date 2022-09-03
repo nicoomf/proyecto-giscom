@@ -87,13 +87,23 @@ $(document).ready(function () {
           },
         });
 
-        const redirect = () => {
-          location.href = "/admin/publicaciones";
-        };
+        (async () => {
+          await Swal.fire({
+            title: "Se creó correctamente!",
+            icon: "success",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+          });
 
-        setTimeout(function () {
-          redirect();
-        }, 200);
+          const redirect = () => {
+            location.href = "/admin/publicaciones";
+          };
+
+          setTimeout(function () {
+            redirect();
+          }, 200);
+        })();
       }
     }
   });
@@ -164,13 +174,25 @@ $(document).ready(function () {
           // dataType: 'json'
         });
 
-        const redirect = () => {
-          location.href = "/admin/publicaciones";
-        };
+        (async () => {
+          await Swal.fire({
+            title: "Se guardó correctamente!",
+            icon: "success",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+          });
 
-        setTimeout(function () {
-          redirect();
-        }, 200);
+          const redirect = () => {
+            location.href = "/admin/publicaciones";
+          };
+  
+          setTimeout(function () {
+            redirect();
+          }, 200);
+
+        })();
+
       }
     }
   });
@@ -234,13 +256,24 @@ $(document).ready(function () {
         },
       });
 
-      const redirect = () => {
-        location.href = "/admin/eventos";
-      };
+      (async () => {
+        await Swal.fire({
+          title: "Se creó correctamente!",
+          icon: "success",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+        });
 
-      setTimeout(function () {
-        redirect();
-      }, 300);
+        const redirect = () => {
+          location.href = "/admin/eventos";
+        };
+  
+        setTimeout(function () {
+          redirect();
+        }, 300);
+
+      })();
     }
   });
 
@@ -305,17 +338,28 @@ $(document).ready(function () {
           hora: hora,
           breveDescrip: breveDescrip,
           fechaG: fechaG,
-          horaG: horaG
+          horaG: horaG,
         },
       });
 
-      const redirect = () => {
-        location.href = "/admin/eventos";
-      };
+      (async () => {
+        await Swal.fire({
+          title: "Se guardó correctamente!",
+          icon: "success",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+        });
 
-      setTimeout(function () {
-        redirect();
-      }, 200);
+        const redirect = () => {
+          location.href = "/admin/eventos";
+        };
+  
+        setTimeout(function () {
+          redirect();
+        }, 300);
+
+      })();
     }
   });
 

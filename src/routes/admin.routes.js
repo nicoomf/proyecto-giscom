@@ -60,5 +60,6 @@ router.post('/admin/save-evento', auth.isAuthenticated, eventController.createEv
 router.get('/admin/edit-event/:id', auth.isAuthenticated, eventController.renderEditEvento);
 router.put('/admin/edit-event/:id', auth.isAuthenticated, eventController.updateEvent);
 router.delete('/admin/delete-event/:id', auth.isAuthenticated, eventController.deleteEvent);
+router.post('/admin/evento/send-mail', auth.isAuthenticated, eventController.sendMailSubs);
 
 module.exports = router;

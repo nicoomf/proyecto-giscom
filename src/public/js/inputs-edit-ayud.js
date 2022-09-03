@@ -186,13 +186,25 @@ $(document).ready(function () {
         dataType: "json",
       });
 
-      const redirect = () => {
-        location.href = "/admin/ayudantes";
-      };
+      (async () => {
+        await Swal.fire({
+          title: "Se envió correctamente!",
+          icon: "success",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+        });
 
-      setTimeout(function () {
-        redirect();
-      }, 200);
+        const redirect = () => {
+          location.href = "/admin/ayudantes";
+        };
+  
+        setTimeout(function () {
+          redirect();
+        }, 200);
+
+      })();
+
     }
   });
 });

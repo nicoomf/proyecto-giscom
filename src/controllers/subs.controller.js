@@ -17,7 +17,7 @@ subsController.addSubs = async (req, res) => {
         console.log("el correo ya existe!");
     } else {
         await Event.findByIdAndUpdate(id, {$push: { 'subs': subs }});
-        emailer.sendMailEvent(email, nombre, apellido, evento)
+        emailer.sendMailSubEvent(email, nombre, apellido, evento)
         res.sendStatus(200);
     }
 };
@@ -36,7 +36,7 @@ subsController.addSubsGeneral = async (req, res) => {
         // const newSubs = new Subs ({ nombre, apellido, email });
         const newSubs = new Subs ({ email });
         await newSubs.save();
-        emailer.sendMail(email);
+        emailer.sendMailSub(email);
         res.send(200, {mensaje: "Subscriptor guardado!"});
     }
 

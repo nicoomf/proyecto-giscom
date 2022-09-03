@@ -208,13 +208,24 @@ $(document).ready(function () {
         dataType: "json",
         success: function () {
           // location.href = "/admin/investigadores";
-          const redirect = () => {
-            location.href = "/admin/investigadores";
-          };
 
-          setTimeout(function () {
-            redirect();
-          }, 200);
+          (async () => {
+            await Swal.fire({
+              title: "Se envió correctamente!",
+              icon: "success",
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+              allowEnterKey: false,
+            });
+
+            const redirect = () => {
+              location.href = "/admin/investigadores";
+            };
+
+            setTimeout(function () {
+              redirect();
+            }, 200);
+          })();
         },
         failure: function (response) {
           response.alert(mensaje);
