@@ -251,6 +251,8 @@ $(document).ready(function () {
     var fecha = $("#fecha").val();
     var hora = $("#hora").val();
     var breveDescrip = $("#breveDescrip").val();
+    var fechaG = $("#fechaGuardada").val();
+    var horaG = $("#horaGuardada").val();
 
     // var json = `{"titulo": "${titulo}","descripcion": "${descripcion}","fecha": "${fecha}"},"hora": "${hora}","breveDescrip": "${breveDescrip}"}`;
 
@@ -302,6 +304,8 @@ $(document).ready(function () {
           fecha: fecha,
           hora: hora,
           breveDescrip: breveDescrip,
+          fechaG: fechaG,
+          horaG: horaG
         },
       });
 
@@ -346,7 +350,7 @@ $(document).ready(function () {
   const vigente = $("#vigente").val();
   const fecha = $("#fechaFormat").val();
 
-  console.log(vigente);
+  // console.log(vigente);
 
   if (vigente == "true") {
     let massage = `

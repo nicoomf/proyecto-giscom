@@ -21,16 +21,34 @@ let meses = [
   "12",
 ];
 
+var dia = fechaMinima.getDate();
+if (dia < 10 ) {
+  dia = `0${dia}`;
+}
+
 var fechaFormat = `${fechaMinima.getFullYear()}-${
   meses[fechaMinima.getMonth()]
-}-${fechaMinima.getDate()}`;
+}-${dia}`;
+
+// console.log(fechaFormat);
 
 var fechaG = document.getElementById("fecha");
 fechaG = fechaG.value;
 
+var fecha = document.getElementById("fechaGuardada2");
+fecha = fecha.value;
+// console.log(fecha);
+// console.log(fechaMinima);
+
 var fechaH = `${new Date().getFullYear()}-${
   meses[new Date().getMonth()]
 }-${new Date().getDate()}`;
+
+var fechaHoy = new Date(
+  new Date().getFullYear(),
+  new Date().getMonth(),
+  new Date().getDate()
+);
 
 if (fechaG > fechaFormat) {
   var inputFecha = document.querySelector("#fecha");

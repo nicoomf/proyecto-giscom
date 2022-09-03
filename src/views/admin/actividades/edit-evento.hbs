@@ -41,6 +41,8 @@
                                                     value="{{fechaG}}" required>
                                                 <input type="hidden" id="fechaGuardada" class="d-none"
                                                     name="fechaGuardada" value="{{event.fechaFormat}}">
+                                                <input type="hidden" id="fechaGuardada2" class="d-none"
+                                                    name="fechaGuardada" value="{{event.fecha}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -48,6 +50,8 @@
                                                 <label for="fecha">Hora programada: (*)</label>
                                                 <input type="Time" id="hora" class="form-control" name="hora"
                                                     value="{{event.hora}}" required>
+                                                <input type="hidden" id="horaGuardada" class="d-none"
+                                                    name="horaGuardada" value="{{event.hora}}">
                                             </div>
                                         </div>
                                     </div>

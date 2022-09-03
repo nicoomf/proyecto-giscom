@@ -240,7 +240,7 @@ emails.sendMailEvent = async (correo, nombre, apellido, evento) => {
   // Titulo para el mensaje del email
   const titulo = `¡Te Suscribiste!`;
   //   Mensaje del email
-  const mensaje = `${nombre}!, te informamos que te acabas de suscribir al Evento: "${evento}" <br> ¡Por lo que te recordaremos cuando se acerque la fecha de realización!`;
+  const mensaje = `${nombre}!, te informamos que te acabas de suscribir al Evento: <br><br>"${evento}"<br><br>¡Por lo que te recordaremos cuando se acerque la fecha de realización!`;
   const cuerpo = `<div><h2 style="color: #fff;">${titulo}</h2><p style="color: #fff;">${mensaje}</p></div>`;
 
   const transporter = createTrans();
@@ -268,11 +268,11 @@ emails.sendMailNewPublic = async (correos, categoria, autor) => {
   });
 };
 
-emails.sendMailNewEvent = async (correos, titulo, fecha) => {
+emails.sendMailNewEvent = async (correos, titulo, fecha, hora) => {
   // Titulo para el mensaje del email
   const titulo2 = `¡Se acaba de publicar nuevo Evento!`;
   //   Mensaje del email
-  const mensaje = `Estimad@!, te informamos que nuestros investigadores han fijado un nuevo <b>Evento</b><br><br>"${titulo}"<br><br>Para el: ${fecha}<br><br><a style="color: #fff;" href="https://giscom.herokuapp.com/actividades/eventos">Ir a Giscom</a>`;
+  const mensaje = `Estimad@!, te informamos que nuestros investigadores han fijado un nuevo <b>Evento</b><br><br>"${titulo}"<br><br>Para el: ${fecha} a las: ${hora}<br><br><a style="color: #fff;" href="https://giscom.herokuapp.com/actividades/eventos">Ir a Giscom</a>`;
   const cuerpo = `<div><h2 style="color: #fff;">${titulo2}</h2><p style="color: #fff;">${mensaje}</p></div>`;
 
   const transporter = createTrans();
@@ -280,6 +280,22 @@ emails.sendMailNewEvent = async (correos, titulo, fecha) => {
     from: "Grupo de Investigacion gISCOM <giscom-app@outlook.com>",
     to: `${correos}`,
     subject: `Tenemos nuevo Evento fijado en nuestro sitio web!`,
+    html: `${templateInicio} ${cuerpo} ${templateFinal}`,
+  });
+};
+
+emails.sendMailUpdateEvent = async (correos, titulo, fecha, hora, id) => {
+  // Titulo para el mensaje del email
+  const titulo2 = `Tuvimos que hacer un cambio...`;
+  //   Mensaje del email
+  const mensaje = `Estimad@!, te informamos que hemos cambiado la fecha de nuestro Evento:<br><br>"${titulo}"<br><br>Para el: ${fecha} a las: ${hora}<br><br><a style="color: #fff;" href="https://giscom.herokuapp.com/actividades/eventos/${id}">Ir a Giscom</a>`;
+  const cuerpo = `<div><h2 style="color: #fff;">${titulo2}</h2><p style="color: #fff;">${mensaje}</p></div>`;
+
+  const transporter = createTrans();
+  const info = (await transporter).sendMail({
+    from: "Grupo de Investigacion gISCOM <giscom-app@outlook.com>",
+    to: `${correos}`,
+    subject: `Se cambio la fecha del Evento!`,
     html: `${templateInicio} ${cuerpo} ${templateFinal}`,
   });
 };

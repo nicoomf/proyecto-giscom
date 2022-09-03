@@ -1,11 +1,11 @@
 const eventController = {};
 
 const Event = require("../models/Eventos");
-const Subs = require('../models/Subs');
+const Subs = require("../models/Subs");
 const { randomName, randomUrl } = require("../helpers/libs");
 const { format } = require("date-fns");
 const mongoosePaginate = require("mongoose-paginate-v2");
-const emailer = require('../helpers/emails');
+const emailer = require("../helpers/emails");
 
 eventController.renderEventos = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
@@ -62,9 +62,9 @@ eventController.createEvento = async (req, res) => {
       for (let i = 0; i < correosI.length; i++) {
         const correo = correosI[i].email;
         if (correos == "") {
-          correos = `${correo}`
+          correos = `${correo}`;
         } else {
-          correos = `${correos}, ${correo}`
+          correos = `${correos}, ${correo}`;
         }
       }
       // console.log(correos);
@@ -99,7 +99,7 @@ eventController.createEvento = async (req, res) => {
           breveDescrip,
         });
         await newEvent.save();
-        emailer.sendMailNewEvent(correos,titulo,fechaFormat);
+        emailer.sendMailNewEvent(correos, titulo, fechaFormat, hora);
         res.send({ mensaje: "ok" });
       }
     };
@@ -119,7 +119,27 @@ eventController.renderEditEvento = async (req, res) => {
 };
 
 eventController.updateEvent = async (req, res) => {
-  const { titulo, descripcion, fecha, hora, breveDescrip } = req.body;
+  const { titulo, descripcion, fecha, hora, breveDescrip, fechaG, horaG } =
+    req.body;
+
+  const id = req.params.id;
+
+  const evento = await Event.findById(id).exec();
+  const subsEvent = evento.subs;
+
+  // console.log(evento);
+  // console.log(subsEvent);
+  var correos = ``;
+  for (let i = 0; i < subsEvent.length; i++) {
+    const correo = subsEvent[i].email;
+    if (correos == "") {
+      correos = `${correo}`;
+    } else {
+      correos = `${correos}, ${correo}`;
+    }
+  }
+
+  // console.log(correos);
 
   if (fecha.length !== 0) {
     const fechaArray = fecha.split("-");
@@ -135,6 +155,21 @@ eventController.updateEvent = async (req, res) => {
       newHora[0],
       newHora[1]
     );
+
+    if (fechaFormat != fechaG || hora != horaG) {
+      console.log(
+        "La fecha es distinta! fechaFormat es: %s / y fechaG es: %s",
+        fechaFormat,
+        fechaG
+      );
+      console.log(
+        "La Hora es distinta! hora es: %s / y la horaG es: %s",
+        hora,
+        horaG
+      );
+
+      emailer.sendMailUpdateEvent(correos, titulo, fecha, hora, id);
+    }
 
     await Event.findByIdAndUpdate(req.params.id, {
       titulo,

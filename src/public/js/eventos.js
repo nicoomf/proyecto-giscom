@@ -21,9 +21,18 @@ let meses = [
   "12",
 ];
 
+var dia = fechaMinima.getDate();
+if (dia < 10 ) {
+  dia = `0${dia}`;
+}
+// console.log(dia);
+
 var fechaFormat = `${fechaMinima.getFullYear()}-${
   meses[fechaMinima.getMonth()]
-}-${fechaMinima.getDate()}`;
+}-${dia}`;
+
+// console.log(fechaMinima);
+// console.log(fechaFormat);
 
 var inputFecha = document.querySelector("#fecha");
 inputFecha.setAttribute("min", fechaFormat);
