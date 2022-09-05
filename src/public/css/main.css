@@ -39,10 +39,6 @@ body {
   font-size: 20px;
 }
 
-#btnSesion1 {
-  
-}
-
 @media (max-width: 1280px) {
   /* Aqui se borra el texto lateral del logo en resoluciones menores a 1280px */
   .texto {
