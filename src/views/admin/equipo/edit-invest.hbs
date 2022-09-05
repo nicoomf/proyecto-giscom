@@ -11,9 +11,15 @@
 
 
             <div class="admin-container w-100 container">
-                <div class="head-admin-container m-3">
-                    <h1 class="title">Menu de Investigadores</h1>
-                    <a href="/admin/investigadores"><button class="btn btn-primary">Volver</button></a>
+                <div class="m-3">
+                    <div class="row">
+                        <div class="col d-flex justify-content-md-start justify-content-center">
+                            <h1 class="title text-center text-md-left">Menú de Investigadores</h1>
+                        </div>
+                        <div class="col d-flex justify-content-md-end justify-content-center align-items-center">
+                            <a href="/admin/investigadores"><button class="btn btn-primary">Volver atrás</button></a>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="content" class="d-block">
@@ -67,10 +73,10 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <label for="titulosEdit">Titulos: (*)</label>
+                                            <label for="titulosEdit">Títulos: (*)</label>
                                             <div class="input-group">
                                                 <input type="text" id="titulosEdit" name="titulos"
-                                                    placeholder="Agregar Titulos, Doctorados o Magisters obtenido..."
+                                                    placeholder="Agregar Títulos, Doctorados, Magísters obtenidos..."
                                                     class="form-control">
                                                 <div class="input-group-append">
                                                     <button type="button" id="agregarTituloEdit"
@@ -83,7 +89,7 @@
 
                                             {{#each invest.titulos}}
                                             <input type="text" id="titulos{{@index}}" name="titulos"
-                                                placeholder="Titulos, Doctorados, Magisters obtenidos..."
+                                                placeholder="Títulos, Doctorados, Magísters obtenidos..."
                                                 class="form-control col-12 my-2" value="{{this}}">
                                             {{/each}}
                                             {{#each invest.titulos}}
@@ -98,10 +104,10 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <label for="areasEdit">Areas: (*)</label>
+                                            <label for="areasEdit">Áreas: (*)</label>
                                             <div class="input-group">
                                                 <input type="text" id="areasEdit" name="areas"
-                                                    placeholder="Areas en las que trabaja..." class="form-control">
+                                                    placeholder="Áreas en las que trabaja..." class="form-control">
                                                 <div class="input-group-append">
                                                     <button type="button" id="agregarAreaEdit"
                                                         class="btn btn-primary">Agregar</button>
@@ -113,7 +119,7 @@
 
                                             {{#each invest.areas}}
                                             <input type="text" id="areas{{@index}}" name="areas"
-                                                placeholder="Areas en las que trabaja..."
+                                                placeholder="Áreas en las que trabaja..."
                                                 class="form-control col-12 my-2" value="{{this}}">
                                             {{/each}}
                                             {{#each invest.areas}}
@@ -129,7 +135,7 @@
                                                 placeholder="Correo Electronico" value="{{invest.email}}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="numero">Numero:</label>
+                                            <label for="numero">Número telefónico</label>
                                             <input type="text" id="numero" class="form-control" name="numero"
                                                 placeholder="Numero telefonico" value="{{invest.numero}}" required>
                                         </div>
@@ -140,7 +146,7 @@
 
                                         <label>Campos obligatorios (*)</label>
                                         <button type="button" class="btn btn-primary btn-block" id="btn-guardarEdit">
-                                            Actializar
+                                            Actualizar
                                         </button>
                                     </form>
 
@@ -151,7 +157,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title font-weight-bold" id="exampleModalLabel">
-                                                        Fotografia de perfil:
+                                                        Fotografía de perfil:
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -162,7 +168,7 @@
                                                     <form action="/admin/upload" method="POST"
                                                         enctype="multipart/form-data" id="formFPEdit">
                                                         <div class="form-group">
-                                                            <label for="archivo">Agregar fotografia:</label>
+                                                            <label for="archivo">Agregar fotografía:</label>
                                                             <input type="file" id="fotoPerfilEdit" name="archivo"
                                                                 class="custom-file"
                                                                 accept="image/jpg, image/jpeg, image/png" required>
@@ -172,7 +178,7 @@
                                                         </div>
                                                         <div class="form-group float-right">
                                                             <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal" id="cerrarFPEdit">Close</button>
+                                                                data-dismiss="modal" id="cerrarFPEdit">Cerrar</button>
                                                             <button type="button" id="btnCargarImgEdit"
                                                                 class="btn btn-primary d-none">Guardar</button>
                                                         </div>

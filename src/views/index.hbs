@@ -15,9 +15,9 @@
                             </div>
                             <input type="hidden" id="idNovedad{{@index}}" value="{{id}}">
                             <input type="hidden" id="catNovedad{{@index}}" value="{{categoria}}">
-                            <button type='submit' class='mt-4 btn btn-warning'>
-                                Ver más
-                            </button>
+                            <a href="/actividades/{{tipo}}/{{id}}"><button type='submit' class='mt-4 btn btn-warning'>
+                                    Ver más
+                                </button></a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                                     <i class="fas fa-user"></i> {{autor}}
                                 </a> &nbsp;
                                 <a href="/actividades/publicaciones?categoria={{categoria}}"
-                                class="badge barge-pill badge-secondary rounded">{{categoria}}</a>
+                                    class="badge barge-pill badge-secondary rounded">{{categoria}}</a>
                             </p>
                             <div class="limit-line my-3">
                                 {{breveDescrip}}

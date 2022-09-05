@@ -10,9 +10,15 @@
             <button class="btn btn-primary" id="sidebarToggle"><i class="fas fa-bars"></i></button>
 
             <div class="admin-container w-100 container">
-                <div class="head-admin-container m-3">
-                    <h1 class="title">Menu de Ayudantes</h1>
-                    <a href="/admin/ayudantes"><button class="btn btn-primary">Volver Atras</button></a>
+                <div class="m-3">
+                    <div class="row">
+                        <div class="col d-flex justify-content-md-start justify-content-center">
+                            <h1 class="title text-center text-md-left">Menú de Ayudantes</h1>
+                        </div>
+                        <div class="col d-flex justify-content-md-end justify-content-center align-items-center">
+                            <a href="/admin/ayudantes"><button class="btn btn-primary">Volver atrás</button></a>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="content" class="d-block">
@@ -72,7 +78,7 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <label for="profesor">Profesor(res) Guia: (*)</label>
+                                            <label for="profesor">Profesor(res) Guía: (*)</label>
                                             <div class="input-group">
                                                 <select class="custom-select form-control" id="profesor"
                                                     name="profesor">
@@ -115,7 +121,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title font-weight-bold" id="exampleModalLabel">
-                                                        Fotografia de perfil:
+                                                        Fotografía de perfil:
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -126,7 +132,7 @@
                                                     <form action="/admin/upload" method="POST"
                                                         enctype="multipart/form-data" id="formFPAyudEdit">
                                                         <div class="form-group">
-                                                            <label for="archivo">Agregar fotografia:</label>
+                                                            <label for="archivo">Agregar fotografía:</label>
                                                             <input type="file" id="fotoPerfilAyudEdit" name="archivo"
                                                                 class="custom-file"
                                                                 accept="image/jpg, image/jpeg, image/png" required>
@@ -137,7 +143,7 @@
                                                         <div class="form-group float-right">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal"
-                                                                id="cerrarFPAyudEdit">Close</button>
+                                                                id="cerrarFPAyudEdit">Cerrar</button>
                                                             <button type="button" id="btnCargarImgAyudEdit"
                                                                 class="btn btn-primary d-none">Guardar</button>
                                                         </div>

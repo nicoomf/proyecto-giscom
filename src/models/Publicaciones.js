@@ -9,7 +9,8 @@ const publicacionSchema = new Schema({
     url: {type: String, required: true},
     creado: {type: String},
     autor: {type: String},
-    categoria: {type: String, unique: true}
+    categoria: {type: String, unique: true},
+    tipo: { type: String, default: "publicaciones" }
 },{
     timestamps: true
 });

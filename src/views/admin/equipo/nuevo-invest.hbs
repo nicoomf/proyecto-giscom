@@ -10,9 +10,15 @@
             <button class="btn btn-primary" id="sidebarToggle"><i class="fas fa-bars"></i></button>
 
             <div class="admin-container w-100 container">
-                <div class="head-admin-container m-3">
-                    <h1 class="title">Menu de Investigadores</h1>
-                    <a href="/admin/investigadores"><button class="btn btn-primary">Volver</button></a>
+                <div class="m-3">
+                    <div class="row">
+                        <div class="col d-flex justify-content-md-start justify-content-center">
+                            <h1 class="title text-center text-md-left">Menú de Investigadores</h1>
+                        </div>
+                        <div class="col d-flex justify-content-md-end justify-content-center align-items-center">
+                            <a href="/admin/investigadores"><button class="btn btn-primary">Volver atrás</button></a>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="content" class="d-block">
@@ -59,10 +65,10 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <label for="titulos">Titulos: (*)</label>
+                                            <label for="titulos">Títulos: (*)</label>
                                             <div class="input-group">
                                                 <input type="text" id="titulos" name="titulos"
-                                                    placeholder="Titulos, Doctorados, Magisters obtenidos..."
+                                                    placeholder="Títulos, Doctorados, Magísters obtenidos..."
                                                     class="form-control">
                                                 <div class="input-group-append">
                                                     <button type="button" id="agregarTitulo"
@@ -77,10 +83,10 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <label for="areas">Areas: (*)</label>
+                                            <label for="areas">Áreas: (*)</label>
                                             <div class="input-group">
                                                 <input type="text" id="areas" name="areas"
-                                                    placeholder="Areas en las que trabaja..." class="form-control">
+                                                    placeholder="Áreas en las que trabaja..." class="form-control">
                                                 <div class="input-group-append">
                                                     <button type="button" id="agregarArea"
                                                         class="btn btn-primary">Agregar</button>
@@ -96,7 +102,7 @@
                                                 placeholder="Correo Electronico" value="{{email}}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="numero">Numero:</label>
+                                            <label for="numero">Número telefónico:</label>
                                             <input type="text" id="numero" class="form-control" name="numero"
                                                 placeholder="Numero telefonico" value="{{numero}}" required>
                                         </div>
@@ -105,7 +111,7 @@
 
                                         </div>
 
-                                        <label for="email">Campos obligatorios (*)</label>
+                                        <label>Campos obligatorios (*)</label>
                                         <button type="button" class="btn btn-primary btn-block" id="btn-test">
                                             Registrar
                                         </button>
@@ -118,7 +124,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title font-weight-bold" id="exampleModalLabel">
-                                                        Fotografia de perfil:
+                                                        Fotografía de perfil:
                                                     </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -129,7 +135,7 @@
                                                     <form action="/admin/upload" method="POST"
                                                         enctype="multipart/form-data" id="formFP">
                                                         <div class="form-group">
-                                                            <label for="archivo">Agregar fotografia:</label>
+                                                            <label for="archivo">Agregar fotografía:</label>
                                                             <input type="file" id="fotoPerfil" name="archivo"
                                                                 class="custom-file"
                                                                 accept="image/jpg, image/jpeg, image/png" required>
@@ -139,7 +145,7 @@
                                                         </div>
                                                         <div class="form-group float-right">
                                                             <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal" id="cerrarFP">Close</button>
+                                                                data-dismiss="modal" id="cerrarFP">Cerrar</button>
                                                             <button type="button" id="btnCargarImg"
                                                                 class="btn btn-primary d-none">Guardar</button>
                                                         </div>

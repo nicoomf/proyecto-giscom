@@ -8,12 +8,6 @@ indexController.renderIndex = async (req, res) => {
   const public = await Public.find();
   const event = await Event.find();
 
-  // ultimas 3 publicaciones en descendente:
-  const publicUlt1 = public[public.length - 1];
-  const publicUlt2 = public[public.length - 2];
-  const publicUlt3 = public[public.length - 3];
-  const public2 = [publicUlt1, publicUlt2, publicUlt3];
-
   // ULTIMAS 4 PUBLICACIONES:
   const ultimasPublicI = await Public.paginate(
     {},
@@ -22,12 +16,13 @@ indexController.renderIndex = async (req, res) => {
 
   const ultimasPublic = ultimasPublicI.docs;
 
-
-  // Ultimos 3 eventos para mostrar en inicio:
+  // Ultimos 3 eventos para mostrar en Novedades:
   const primero = event[event.length - 1];
   const segundo = event[event.length - 2];
-  const tercero = event[event.length - 3];
-  const ultimos3 = [primero, segundo, tercero];
+
+  // ultimas 3 publicaciones en descendente:
+  const publicUlt1 = public[public.length - 1];
+  const publicUlt2 = public[public.length - 2];
 
   const novedades = [primero, publicUlt1, segundo, publicUlt2];
 
@@ -40,9 +35,6 @@ indexController.renderIndex = async (req, res) => {
   const proximosEventos = proximosEventosI.docs;
 
   res.render("index", {
-    public,
-    public2,
-    ultimos3,
     novedades,
     ultimasPublic,
     proximosEventos,

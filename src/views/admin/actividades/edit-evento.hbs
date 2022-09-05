@@ -10,9 +10,15 @@
             <button class="btn btn-primary" id="sidebarToggle"><i class="fas fa-bars"></i></button>
 
             <div class="admin-container w-100 container">
-                <div class="head-admin-container m-3">
-                    <h1 class="title">Menu de Eventos</h1>
-                    <a href="/admin/eventos"><button class="btn btn-primary">Volver Atras</button></a>
+                <div class="m-3">
+                    <div class="row">
+                        <div class="col d-flex justify-content-md-start justify-content-center">
+                            <h1 class="title text-center text-md-left">Menú de Eventos</h1>
+                        </div>
+                        <div class="col d-flex justify-content-md-end justify-content-center align-items-center">
+                            <a href="/admin/eventos"><button class="btn btn-primary">Volver atrás</button></a>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="content" class="d-block">
@@ -21,19 +27,19 @@
                         <div class="col-lg mx-auto">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3>Nuevo Evento</h3>
+                                    <h3>Editar Evento</h3>
                                 </div>
                                 <div class="card-body">
                                     <form action="" method="POST">
                                         <div class="form-group">
-                                            <label for="titulo">Titulo: (*)</label>
+                                            <label for="titulo">Título: (*)</label>
                                             <input type="text" id="titulo" class="form-control" name="titulo"
-                                                placeholder="Titulo para el evento" value="{{event.titulo}}" required>
+                                                placeholder="Título para el evento" value="{{event.titulo}}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="breveDescrip">Descripcion: (*)</label>
+                                            <label for="breveDescrip">Descripción: (*)</label>
                                             <textarea id="breveDescrip" name="breveDescrip" class="form-control"
-                                                placeholder="Escriba aqui una breve introduccion al Evento..." cols="30"
+                                                placeholder="Escriba aquí una breve introducción al Evento..." cols="30"
                                                 rows="7" maxlength="1000">{{event.breveDescrip}}</textarea>
                                         </div>
                                         <div class="form-group mt-2" id="massageFechasEvento">
@@ -62,7 +68,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group mt-3">
-                                            <label for="editordata">Pagina del Evento: (*)</label>
+                                            <label for="editordata">Página del Evento: (*)</label>
                                             <textarea id="summernote" name="editordata"></textarea>
                                         </div>
                                         <input type="hidden" id="descripcion" value="{{event.descripcion}}">
