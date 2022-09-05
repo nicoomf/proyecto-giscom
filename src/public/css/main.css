@@ -15,7 +15,7 @@ body {
   min-height: 100%;
 }
 
- /* Estilos para el logo de gISCOM */
+/* Estilos para el logo de gISCOM */
 .logo {
   width: 30%;
 }
@@ -40,12 +40,10 @@ body {
 }
 
 @media (max-width: 1280px) {
-  
   /* Aqui se borra el texto lateral del logo en resoluciones menores a 1280px */
   .texto {
-    display: none; 
+    display: none;
   }
-
 }
 
 /* Estilos del texto lateral del logo */
@@ -65,7 +63,6 @@ body {
   font-size: 12px;
   font-weight: 600;
 }
-
 
 /* Estilos para la pestaña "Nosotros" */
 .Nosotros {
@@ -144,7 +141,105 @@ body {
   --grey: #efefef;
 }
 
-#sidebar-container {
+/* SIDEBAR */
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.mw-50 {
+  max-width: 50%;
+}
+
+@media (max-width: 768px) {
+  .mw-sm-100 {
+    max-width: 100%;
+  }
+}
+
+
+/* #sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background: #002035;
+  left: -200px;
+  transition: all 100ms linear;
+} */
+
+/* #sidebar.active {
+  left: 0;
+}
+
+#sidebar ul {
+  margin: 0;
+  padding: 0;
+} */
+/* 
+#sidebar ul li {
+  color: #fff;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  padding: 15px 10px;
+  list-style: none;
+} */
+
+/* 
+#sidebar .toggle-btn {
+  position: absolute;
+  left: 280px;
+  top: 20px;
+  cursor: pointer;
+} */
+
+/* #sidebar .toggle-btn span {
+  display: block;
+  width: 40px;
+  text-align: center;
+  font-size: 30px;
+  border: 1px solid #000;
+  border-radius: 15%;
+} */
+
+/* #sidebar-container {
   min-height: 100vh;
 }
 
@@ -166,13 +261,13 @@ body {
 #sidebar-container .menu a:hover {
   text-decoration: none;
   background-color: #002e4d;
-}
+} */
 
 .bg-panel {
   background-color: #ebebeb;
 }
 
-.bg-aside {
+.bg-sidebar {
   background-color: var(--colorFondo);
 }
 
@@ -187,7 +282,6 @@ body {
   align-items: center;
 }
 
-
 .slider {
   background: url("/img/extra/bg-3.png");
   background-size: cover;
@@ -198,7 +292,6 @@ body {
 .container2 {
   max-width: 900px;
 }
-
 
 /* Limites de parrafos o textos. */
 .limit-line {
@@ -281,5 +374,4 @@ footer {
     max-width: 100%;
     max-height: 300px;
   }
-
 }

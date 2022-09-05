@@ -1,74 +1,83 @@
 <div class="bg-panel">
-    <div class="d-flex">
 
+    <div class="d-flex" id="wrapper">
+
+        {{!-- SIDEBAR --}}
         {{>sidebar}}
 
-        <div class="admin-container w-100 container">
-            <div class="head-admin-container m-3">
-                <h1 class="title">Menu de Eventos</h1>
-                <a href="/admin/eventos"><button class="btn btn-primary">Volver Atras</button></a>
-            </div>
+        {{!-- PAGE CONTENT --}}
+        <div id="page-content-wrapper">
+            <button class="btn btn-primary" id="sidebarToggle"><i class="fas fa-bars"></i></button>
 
-            <div id="content" class="d-block">
-                <!-- FORMULARIO -->
-                <div class="row">
-                    <div class="col-lg mx-auto">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Nuevo Evento</h3>
-                            </div>
-                            <div class="card-body">
-                                <form action="" method="POST">
-                                    <div class="form-group">
-                                        <label for="titulo">Titulo: (*)</label>
-                                        <input type="text" id="titulo" class="form-control" name="titulo"
-                                            placeholder="Titulo para el evento" value="{{titulo}}" required autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="breveDescrip">Descripcion: (*)</label>
-                                        <textarea id="breveDescrip" name="breveDescrip" class="form-control"
-                                            placeholder="Escriba aqui una breve introduccion al Evento..." cols="30"
-                                            rows="7" maxlength="1000">{{breveDescrip}}</textarea>
-                                    </div>
-                                    <div class="form-group mt-2" id="massageFechasEvento">
+            <div class="admin-container w-100 container">
+                <div class="head-admin-container m-3">
+                    <h1 class="title">Menu de Eventos</h1>
+                    <a href="/admin/eventos"><button class="btn btn-primary">Volver Atras</button></a>
+                </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="fecha">Fecha: (*)</label>
-                                                <input type="Date" id="fecha" class="form-control" name="fecha">
+                <div id="content" class="d-block">
+                    <!-- FORMULARIO -->
+                    <div class="row">
+                        <div class="col-lg mx-auto">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Nuevo Evento</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="" method="POST">
+                                        <div class="form-group">
+                                            <label for="titulo">Titulo: (*)</label>
+                                            <input type="text" id="titulo" class="form-control" name="titulo"
+                                                placeholder="Titulo para el evento" value="{{titulo}}" required
+                                                autofocus>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="breveDescrip">Descripcion: (*)</label>
+                                            <textarea id="breveDescrip" name="breveDescrip" class="form-control"
+                                                placeholder="Escriba aqui una breve introduccion al Evento..." cols="30"
+                                                rows="7" maxlength="1000">{{breveDescrip}}</textarea>
+                                        </div>
+                                        <div class="form-group mt-2" id="massageFechasEvento">
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="fecha">Fecha: (*)</label>
+                                                    <input type="Date" id="fecha" class="form-control" name="fecha">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="fecha">Hora: (*)</label>
+                                                    <input type="Time" id="hora" class="form-control" name="hora"
+                                                        value="{{hora}}" min="" required>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="fecha">Hora: (*)</label>
-                                                <input type="Time" id="hora" class="form-control" name="hora"
-                                                    value="{{hora}}" min="" required>
-                                            </div>
+                                        <div class="form-group mt-3">
+                                            <label for="editordata">Pagina del Evento: (*)</label>
+                                            <textarea id="summernote" name="editordata"></textarea>
                                         </div>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <label for="editordata">Pagina del Evento: (*)</label>
-                                        <textarea id="summernote" name="editordata"></textarea>
-                                    </div>
-                                    <div class="form-group mt-2" id="massageEventos">
+                                        <div class="form-group mt-2" id="massageEventos">
 
-                                    </div>
-                                    <label>Campos obligatorios (*)</label>
-                                    <button type="button" id="btn-guardarEvento"
-                                        class="btn btn-primary btn-block">Crear evento</button>
-                                </form>
+                                        </div>
+                                        <label>Campos obligatorios (*)</label>
+                                        <button type="button" id="btn-guardarEvento"
+                                            class="btn btn-primary btn-block">Crear evento</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- FIN CONTENT -->
+                    <!-- FIN CONTENT -->
 
+                </div>
             </div>
         </div>
 
-    </div>
+    </div> <!-- Fin del Sidebar Wrapper -->
+
 </div>
 
 <script src="/js/eventos.js"></script>

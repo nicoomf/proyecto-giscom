@@ -1,67 +1,76 @@
 <div class="bg-panel">
-    <div class="d-flex">
 
+    <div class="d-flex" id="wrapper">
+
+        {{!-- SIDEBAR --}}
         {{>sidebar}}
 
-        <div class="admin-container w-100 container">
-            <div class="head-admin-container m-3">
-                <h1 class="title">Menu de Administradores</h1>
-                <a href="/admin/administradores"><button class="btn btn-primary">Volver</button></a>
-            </div>
+        {{!-- PAGE CONTENT --}}
+        <div id="page-content-wrapper">
+            <button class="btn btn-primary" id="sidebarToggle"><i class="fas fa-bars"></i></button>
 
-            <div class="pt-1">
-                <div class="row">
-                    <div class="col-md-12 mx-auto">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Editar Administrador</h3>
-                            </div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-group mt-2" id="massageEditAdminResponse">
+            <div class="admin-container w-100 container">
+                <div class="head-admin-container m-3">
+                    <h1 class="title">Menu de Administradores</h1>
+                    <a href="/admin/administradores"><button class="btn btn-primary">Volver</button></a>
+                </div>
 
-                                    </div>
-                                    <input type="text" value="{{admin.id}}" id="idadmin" hidden>
+                <div class="pt-1">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Editar Administrador</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group mt-2" id="massageEditAdminResponse">
 
-                                    <div class="form-group">
-                                        <label for="name">Nombre: (*)</label>
-                                        <input type="text" id="name" class="form-control" name="name"
-                                            placeholder="Nombre Apellido" value="{{admin.name}}" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email: (*)</label>
-                                        <input type="email" id="email" class="form-control" name="email"
-                                            placeholder="Correo Electronico" value="{{admin.email}}" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="actualPassword">Contraseña actual: (*)</label>
-                                        <input type="password" id="actualPassword" class="form-control"
-                                            name="actualPassword" placeholder="Contraseña actual">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Contraseña nueva: (*)</label>
-                                        <input type="password" id="password" class="form-control" name="password"
-                                            placeholder="Contraseña">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="confirm_password">Confirmar Contraseña nueva: (*)</label>
-                                        <input type="password" id="confirm_password" class="form-control"
-                                            name="confirm_password" placeholder="Confirmar Contraseña">
-                                    </div>
-                                    <div class="form-group mt-2" id="massageEditAdmin">
+                                        </div>
+                                        <input type="text" value="{{admin.id}}" id="idadmin" hidden>
 
-                                    </div>
-                                    <button type="button" class="btn btn-primary btn-block" id="btnChangePassword">
-                                        Actualizar
-                                    </button>
-                                </form>
+                                        <div class="form-group">
+                                            <label for="name">Nombre: (*)</label>
+                                            <input type="text" id="name" class="form-control" name="name"
+                                                placeholder="Nombre Apellido" value="{{admin.name}}" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email: (*)</label>
+                                            <input type="email" id="email" class="form-control" name="email"
+                                                placeholder="Correo Electronico" value="{{admin.email}}" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="actualPassword">Contraseña actual: (*)</label>
+                                            <input type="password" id="actualPassword" class="form-control"
+                                                name="actualPassword" placeholder="Contraseña actual">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Contraseña nueva: (*)</label>
+                                            <input type="password" id="password" class="form-control" name="password"
+                                                placeholder="Contraseña">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirm_password">Confirmar Contraseña nueva: (*)</label>
+                                            <input type="password" id="confirm_password" class="form-control"
+                                                name="confirm_password" placeholder="Confirmar Contraseña">
+                                        </div>
+                                        <div class="form-group mt-2" id="massageEditAdmin">
+
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-block" id="btnChangePassword">
+                                            Actualizar
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
 
-    </div>
+    </div> <!-- Fin del Sidebar Wrapper -->
+
 </div>

@@ -1,13 +1,24 @@
 <div class="bg-panel">
-    <div class="d-flex">
-        
+
+    <div class="d-flex" id="wrapper">
+
+        {{!-- SIDEBAR --}}
         {{>sidebar}}
 
-        <div class="jumbotron mt-4 mx-auto">
-            <h1 class="display-4 text-center">Bienvenido al Panel de Administración</h1>
-            <img src="/img/gISCOM_Logov2.png" alt="Logo gISCOM" class="figure-img w-50 d-block mx-auto my-5">
-            <a href="/" class="btn btn-primary d-block mx-auto">Volver a la pagina principal</a>
+        {{!-- PAGE CONTENT --}}
+        <div id="page-content-wrapper">
+            <button class="btn btn-primary" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+
+            <div class="d-flex my-auto">
+                <div class="jumbotron text-center">
+                    <h1 class="">Bienvenid@ al panel de Administración</h1>
+                    <a href="/"><img src="/img/gISCOM_Logov2.png" alt="Logo gISCOM"
+                            class="figure-img img-fluid mw-50 mw-sm-100 d-block mx-auto my-5"></a>
+                    {{!-- <a href="/" class="btn btn-primary mx-auto">Volver a la pagina principal</a> --}}
+                </div>
+            </div>
         </div>
 
-    </div>
+    </div> <!-- Fin del Sidebar Wrapper -->
+
 </div>

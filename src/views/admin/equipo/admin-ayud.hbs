@@ -1,54 +1,63 @@
 <div class="bg-panel">
-    <div class="d-flex">
 
+    <div class="d-flex" id="wrapper">
+
+        {{!-- SIDEBAR --}}
         {{>sidebar}}
 
-        <div class="admin-container w-100 container">
-            <div class="head-admin-container m-3">
-                <h1 class="title">Menu de Ayudantes</h1>
-                <a href="/admin/nuevo-ayud"><button class="btn btn-primary">Agregar Ayudante</button></a>
-            </div>
+        {{!-- PAGE CONTENT --}}
+        <div id="page-content-wrapper">
+            <button class="btn btn-primary" id="sidebarToggle"><i class="fas fa-bars"></i></button>
 
-            <div id="content" class="d-block">
-                <!-- Tabla -->
-                <div class="container w-100">
-                    <table class="table table-hover">
-                        <thead class="bg-primary text-light">
-                            <tr class="text-center">
-                                <th class="text-left">Nombre</th>
-                                <th class="text-left">Correo</th>
-                                <th width="15%">Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each ayud}}
-                            <tr>
-                                <td>{{nombre}}</td>
-                                <td>{{email}}</td>
-                                <td>
-                                    <div class="d-flex justify-content-center">
-                                        <form action="/admin/edit-ayud/{{_id}}" method="PUT">
-                                            <button type="submit" class="btn btn-primary btn-sm mr-2">
-                                                <i class="fas fa-pen lead"></i>
-                                            </button>
-                                        </form>
-                                        <form action="/admin/delete-ayud/{{_id}}?_method=DELETE" method="POST">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger btn-sm mr-2">
-                                                <i class="fas fa-trash-alt lead"></i>
-                                            </button>
-                                        </form>
-                                        <a href="/equipo/ayudantes/#ayud{{_id}}" class="btn btn-success btn-sm"
-                                            target="_blank"><i class="fas fa-eye lead"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
+            <div class="admin-container w-100 container">
+                <div class="head-admin-container m-3">
+                    <h1 class="title">Menu de Ayudantes</h1>
+                    <a href="/admin/nuevo-ayud"><button class="btn btn-primary">Agregar Ayudante</button></a>
+                </div>
+
+                <div id="content" class="d-block">
+                    <!-- Tabla -->
+                    <div class="container w-100">
+                        <table class="table table-hover">
+                            <thead class="bg-primary text-light">
+                                <tr class="text-center">
+                                    <th class="text-left">Nombre</th>
+                                    <th class="text-left">Correo</th>
+                                    <th width="15%">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each ayud}}
+                                <tr>
+                                    <td>{{nombre}}</td>
+                                    <td>{{email}}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            <form action="/admin/edit-ayud/{{_id}}" method="PUT">
+                                                <button type="submit" class="btn btn-primary btn-sm mr-2">
+                                                    <i class="fas fa-pen lead"></i>
+                                                </button>
+                                            </form>
+                                            <form action="/admin/delete-ayud/{{_id}}?_method=DELETE" method="POST">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger btn-sm mr-2">
+                                                    <i class="fas fa-trash-alt lead"></i>
+                                                </button>
+                                            </form>
+                                            <a href="/equipo/ayudantes/#ayud{{_id}}" class="btn btn-success btn-sm"
+                                                target="_blank"><i class="fas fa-eye lead"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
+    </div> <!-- Fin del Sidebar Wrapper -->
+
 </div>

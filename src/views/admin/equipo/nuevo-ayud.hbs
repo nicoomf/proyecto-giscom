@@ -1,143 +1,154 @@
 <div class="bg-panel">
-    <div class="d-flex">
 
+    <div class="d-flex" id="wrapper">
+
+        {{!-- SIDEBAR --}}
         {{>sidebar}}
 
-        <div class="admin-container w-100 container">
-            <div class="head-admin-container m-3">
-                <h1 class="title">Menu de Ayudantes</h1>
-                <a href="/admin/ayudantes"><button class="btn btn-primary">Volver Atras</button></a>
-            </div>
+        {{!-- PAGE CONTENT --}}
+        <div id="page-content-wrapper">
+            <button class="btn btn-primary" id="sidebarToggle"><i class="fas fa-bars"></i></button>
 
-            <div id="content" class="d-block">
-                <!-- FORMULARIO -->
-                <div class="row">
-                    <div class="col-lg mx-auto">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Nuevo Ayudante</h3>
-                            </div>
-                            <div class="card-body">
+            <div class="admin-container w-100 container">
+                <div class="head-admin-container m-3">
+                    <h1 class="title">Menu de Ayudantes</h1>
+                    <a href="/admin/ayudantes"><button class="btn btn-primary">Volver Atras</button></a>
+                </div>
 
-                                <form>
+                <div id="content" class="d-block">
+                    <!-- FORMULARIO -->
+                    <div class="row">
+                        <div class="col-lg mx-auto">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Nuevo Ayudante</h3>
+                                </div>
+                                <div class="card-body">
 
-                                    <div class="row">
-                                        <div class="col-lg-3 d-flex justify-content-center aling-items-center p-0">
-                                            <button type="button" class="btn" data-toggle="modal"
-                                                data-target="#modalFPAyud"
-                                                style="width: 150px; height: 150px; border-radius: 100%; padding: 0;">
-                                                <img class="user-img" id="imgDefaultAyud"
-                                                    src="/uploads/user_default.png"
-                                                    style="width: 100%; height: 100%; border-radius: 100%; object-fit: cover;">
-                                                <img class="user-img d-none" id="imgUploadAyud" src="" alt=""
-                                                    width="150px"
-                                                    style="width: 100%; height: 100%; border-radius: 100%; object-fit: cover;">
-                                                <input type="text" name="imgUrl" id="imgUrlAyud"
-                                                    value="user_default.png" class="d-none form-control">
-                                            </button>
-                                        </div>
+                                    <form>
 
-                                        <div class="col-lg-9">
-                                            <div class="form-group">
-                                                <label for="nombre">Nombre: (*)</label>
-                                                <input type="text" id="nombreAyud" class="form-control" name="nombre"
-                                                    placeholder="Nombre completo" value="{{nombre}}" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="carrera">Carrera: (*)</label>
-                                                <input type="text" id="carreraAyud" class="form-control" name="carrera"
-                                                    placeholder="Carrera del Estudiante" value="{{carrera}}" required>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="proyecto">Proyecto: (*)</label>
-                                        <input type="text" id="proyectoAyud" class="form-control" name="proyecto"
-                                            placeholder="Proyecto que realiza" value="{{proyecto}}" required>
-                                    </div>
-                                    <div class="form-group" id="massageProfesores">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="profesor">Profesor(res) Guia: (*)</label>
-                                        <div class="input-group">
-                                            <select class="custom-select form-control" id="profesor" name="profesor">
-                                                <option value="default">Seleccione un profesor</option>
-                                                {{#each invest}}
-                                                <option value="{{nombre}}">{{nombre}}</option>
-                                                {{/each}}
-                                            </select>
-                                            <button type="button" id="agregarProfesor"
-                                                class="btn btn-primary">Agregar</button>
-                                        </div>
-                                        <ul id="lista_profesores" class="list-group my-2">
-
-                                        </ul>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email: (*)</label>
-                                        <input type="email" id="emailAyud" class="form-control" name="email"
-                                            placeholder="Correo Electronico" value="{{email}}" required>
-                                    </div>
-
-                                    <div class="form-group mt-2" id="massageErrorAyud">
-
-                                    </div>
-
-                                    <label>Campos obligatorios (*)</label>
-                                    <button type="button" id="btn-GuardarAyud"
-                                        class="btn btn-primary btn-block">Guardar</button>
-                                </form>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="modalFPAyud" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title font-weight-bold" id="exampleModalLabel">
-                                                    Fotografia de perfil:
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                                        <div class="row">
+                                            <div class="col-lg-3 d-flex justify-content-center aling-items-center p-0">
+                                                <button type="button" class="btn" data-toggle="modal"
+                                                    data-target="#modalFPAyud"
+                                                    style="width: 150px; height: 150px; border-radius: 100%; padding: 0;">
+                                                    <img class="user-img" id="imgDefaultAyud"
+                                                        src="/uploads/user_default.png"
+                                                        style="width: 100%; height: 100%; border-radius: 100%; object-fit: cover;">
+                                                    <img class="user-img d-none" id="imgUploadAyud" src="" alt=""
+                                                        width="150px"
+                                                        style="width: 100%; height: 100%; border-radius: 100%; object-fit: cover;">
+                                                    <input type="text" name="imgUrl" id="imgUrlAyud"
+                                                        value="user_default.png" class="d-none form-control">
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                <form action="/admin/upload" method="POST" enctype="multipart/form-data"
-                                                    id="formFPAyud">
-                                                    <div class="form-group">
-                                                        <label for="archivo">Agregar fotografia:</label>
-                                                        <input type="file" id="fotoPerfilAyud" name="archivo"
-                                                            class="custom-file"
-                                                            accept="image/jpg, image/jpeg, image/png" required>
-                                                    </div>
-                                                    <div class="form-group mt-2" id="massageFotoPerfilAyud">
 
-                                                    </div>
-                                                    <div class="form-group float-right">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal" id="cerrarFPAyud">Close</button>
-                                                        <button type="button" id="btnCargarImgAyud"
-                                                            class="btn btn-primary d-none">Guardar</button>
-                                                    </div>
-                                                </form>
+                                            <div class="col-lg-9">
+                                                <div class="form-group">
+                                                    <label for="nombre">Nombre: (*)</label>
+                                                    <input type="text" id="nombreAyud" class="form-control"
+                                                        name="nombre" placeholder="Nombre completo" value="{{nombre}}"
+                                                        required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="carrera">Carrera: (*)</label>
+                                                    <input type="text" id="carreraAyud" class="form-control"
+                                                        name="carrera" placeholder="Carrera del Estudiante"
+                                                        value="{{carrera}}" required>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="proyecto">Proyecto: (*)</label>
+                                            <input type="text" id="proyectoAyud" class="form-control" name="proyecto"
+                                                placeholder="Proyecto que realiza" value="{{proyecto}}" required>
+                                        </div>
+                                        <div class="form-group" id="massageProfesores">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="profesor">Profesor(res) Guia: (*)</label>
+                                            <div class="input-group">
+                                                <select class="custom-select form-control" id="profesor"
+                                                    name="profesor">
+                                                    <option value="default">Seleccione un profesor</option>
+                                                    {{#each invest}}
+                                                    <option value="{{nombre}}">{{nombre}}</option>
+                                                    {{/each}}
+                                                </select>
+                                                <button type="button" id="agregarProfesor"
+                                                    class="btn btn-primary">Agregar</button>
+                                            </div>
+                                            <ul id="lista_profesores" class="list-group my-2">
+
+                                            </ul>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email: (*)</label>
+                                            <input type="email" id="emailAyud" class="form-control" name="email"
+                                                placeholder="Correo Electronico" value="{{email}}" required>
+                                        </div>
+
+                                        <div class="form-group mt-2" id="massageErrorAyud">
+
+                                        </div>
+
+                                        <label>Campos obligatorios (*)</label>
+                                        <button type="button" id="btn-GuardarAyud"
+                                            class="btn btn-primary btn-block">Guardar</button>
+                                    </form>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modalFPAyud" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title font-weight-bold" id="exampleModalLabel">
+                                                        Fotografia de perfil:
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/admin/upload" method="POST"
+                                                        enctype="multipart/form-data" id="formFPAyud">
+                                                        <div class="form-group">
+                                                            <label for="archivo">Agregar fotografia:</label>
+                                                            <input type="file" id="fotoPerfilAyud" name="archivo"
+                                                                class="custom-file"
+                                                                accept="image/jpg, image/jpeg, image/png" required>
+                                                        </div>
+                                                        <div class="form-group mt-2" id="massageFotoPerfilAyud">
+
+                                                        </div>
+                                                        <div class="form-group float-right">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal" id="cerrarFPAyud">Close</button>
+                                                            <button type="button" id="btnCargarImgAyud"
+                                                                class="btn btn-primary d-none">Guardar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                {{!-- Fin Modal --}}
                             </div>
-                            {{!-- Fin Modal --}}
                         </div>
                     </div>
                 </div>
+                <!-- FIN CONTENT -->
+
             </div>
-            <!-- FIN CONTENT -->
 
         </div>
-    </div>
 
-</div>
+    </div> <!-- Fin del Sidebar Wrapper -->
+
 </div>
