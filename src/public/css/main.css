@@ -39,6 +39,10 @@ body {
   font-size: 20px;
 }
 
+#btnSesion1 {
+  
+}
+
 @media (max-width: 1280px) {
   /* Aqui se borra el texto lateral del logo en resoluciones menores a 1280px */
   .texto {
@@ -195,80 +199,8 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
 }
 
-
-/* #sidebar {
-  position: fixed;
-  width: 250px;
-  height: 100%;
-  background: #002035;
-  left: -200px;
-  transition: all 100ms linear;
-} */
-
-/* #sidebar.active {
-  left: 0;
-}
-
-#sidebar ul {
-  margin: 0;
-  padding: 0;
-} */
-/* 
-#sidebar ul li {
-  color: #fff;
-  text-align: center;
-  border-bottom: 1px solid #fff;
-  padding: 15px 10px;
-  list-style: none;
-} */
-
-/* 
-#sidebar .toggle-btn {
-  position: absolute;
-  left: 280px;
-  top: 20px;
-  cursor: pointer;
-} */
-
-/* #sidebar .toggle-btn span {
-  display: block;
-  width: 40px;
-  text-align: center;
-  font-size: 30px;
-  border: 1px solid #000;
-  border-radius: 15%;
-} */
-
-/* #sidebar-container {
-  min-height: 100vh;
-}
-
-#sidebar-container .logo {
-  padding: 1.25rem 1.75rem;
-  width: 100%;
-  justify-content: center;
-}
-
-#sidebar-container .menu {
-  width: 19rem;
-}
-
-#sidebar-container hr {
-  margin: 0;
-  border-bottom: 1px solid #001727;
-}
-
-#sidebar-container .menu a:hover {
-  text-decoration: none;
-  background-color: #002e4d;
-} */
-
 .bg-panel {
   background-color: #ebebeb;
-}
-
-.bg-sidebar {
-  background-color: var(--colorFondo);
 }
 
 .admin-container {
