@@ -10,6 +10,7 @@ const format = require("date-fns/format");
 const mongoosePaginate = require("mongoose-paginate-v2");
 const emailer = require('../helpers/emails');
 
+// RENDERIZA LAS PUBLICACIONES EN LA PAGINA GENERAL:
 activController.renderPublicaciones = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const categoria = req.query.categoria || 1;
@@ -70,11 +71,13 @@ activController.renderPublicaciones = async (req, res) => {
   }
 };
 
+// RENDERIZA UNA PUBLICACION EN LA PAGINA PRINCIPAL:
 activController.renderPublic = async (req, res) => {
   const public = await Public.findById(req.params.id);
   res.render("actividades/publicacion", { public });
 };
 
+// RENDERIZA LAS PUBLICACIONES EN EL PANEL DE ADMINISTRACION:
 activController.renderAdminPublicaciones = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const publicI = await Public.paginate(
@@ -96,12 +99,14 @@ activController.renderAdminPublicaciones = async (req, res) => {
   });
 };
 
+// RENDERIZA EL FORMULARIO DE NUEVA PUBLICACION:
 activController.renderNuevaPublic = async (req, res) => {
   const autores = await Invest.find();
   const categorias = await Categ.find();
   res.render("admin/actividades/nueva-public", { autores, categorias });
 };
 
+// GUARDA LA PUBLICACION CREADA:
 activController.createPublic = async (req, res) => {
   try {
     const savePublic = async () => {
@@ -149,6 +154,7 @@ activController.createPublic = async (req, res) => {
   }
 };
 
+// RENDERIZA EL FORMULARIO PARA EDITAR UNA PUBLICACION:
 activController.renderEditPublic = async (req, res) => {
   const public = await Public.findById(req.params.id);
   const autores = await Invest.find();
@@ -157,6 +163,7 @@ activController.renderEditPublic = async (req, res) => {
   res.render("admin/actividades/edit-public", { public, autores, categorias });
 };
 
+// GUARDA LOS CAMBIOS DE LA PUBLICACION EDITADA:
 activController.updatePublic = async (req, res) => {
   const { titulo, descripcion, autor, categoria, breveDescrip } = req.body;
   await Public.findByIdAndUpdate(req.params.id, {

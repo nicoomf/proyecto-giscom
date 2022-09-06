@@ -3,6 +3,7 @@ const investController = require('../controllers/invest.controller');
 const ayudController = require('../controllers/ayud.controller');
 const router = express.Router();
 
+// EQUIPO:
 router.get('/equipo/investigadores', investController.renderInvest);
 router.get('/equipo/ayudantes', ayudController.renderAyud);
 

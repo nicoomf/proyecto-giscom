@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  // VALIDA LAS CONTRASEÑAS Y EL AUTORIZA EL CAMBIO DE CONTRASEÑAS DE ADMINISTRADOR:
   $("#btnChangePassword").click(function () {
     // alert("Entro a validar!");
 

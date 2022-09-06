@@ -10,6 +10,7 @@ const session = require('express-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+
 require('dotenv').config();
 // console.log(process.env); 
 
@@ -19,6 +20,7 @@ const nombreArch = randomNameArchivo();
 
 // nombreArch + path.extname(file.originalname)
 
+// ALMACENA LAS IMAGENES EN EL SERVIDOR:
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'),
     filename: (req, file, cb) => {
@@ -26,7 +28,7 @@ const storage = multer.diskStorage({
     }
 })
 
-// Initializations:
+// Inicializaciones:
 const app = express();
 require('./config/passport');
 
@@ -64,7 +66,7 @@ app.use(multer({
 }).single('archivo'));
 
 
-// Global Variables:
+// Variables globales:
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');

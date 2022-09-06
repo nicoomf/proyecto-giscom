@@ -5,6 +5,28 @@ const Event = require("../models/Eventos");
 const mongoosePaginate = require("mongoose-paginate-v2");
 
 indexController.renderIndex = async (req, res) => {
+
+  (async () => {
+    const eventI = await Event.find({ vigente: true });
+    for (let index = 0; index < eventI.length; index++) {
+      const horaEvent = eventI[index].hora;
+      const hora = horaEvent.split(":");
+      var fechaHoy = new Date(
+        new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate(),
+        hora[0],
+        hora[1]
+      );
+
+      if (fechaHoy >= eventI[index].fecha) {
+        await Event.findByIdAndUpdate(eventI[index]._id, {
+          vigente: false,
+        });
+      }
+    }
+  })();
+
   const public = await Public.find();
   const event = await Event.find();
 

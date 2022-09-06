@@ -26,7 +26,7 @@ $(document).ready(function () {
   var texto = $("#descripcion").val();
   $("#summernote").summernote("code", texto);
 
-  // Guardar publicaciones:
+  // ENVIA AL BACKEND LA PUBLICACION CREADA:
   $("#btn-guardarPublic").click(function () {
     var titulo = $("#titulo").val();
     var descripcion = `${$("#summernote").summernote("code")}`;
@@ -108,8 +108,7 @@ $(document).ready(function () {
     }
   });
 
-  // Guardar publicaciones editadas
-
+  // ENVIA AL BACKEND LA PUBLICACION EDITADA:
   $("#btn-guardarEditPublic").click(function () {
     var titulo = $("#titulo").val();
     var descripcion = `${$("#summernote").summernote("code")}`;
@@ -170,8 +169,6 @@ $(document).ready(function () {
             categoria: categoria,
             breveDescrip: breveDescrip,
           },
-          // contentType: 'application/json; charset=utf-8',
-          // dataType: 'json'
         });
 
         (async () => {
@@ -195,7 +192,7 @@ $(document).ready(function () {
     }
   });
 
-  // Eventos:
+  // ENVIA EL EVENTO CREADO AL BACKEND:
   $("#btn-guardarEvento").click(function () {
     var titulo = $("#titulo").val();
     var descripcion = `${$("#summernote").summernote("code")}`;
@@ -274,7 +271,7 @@ $(document).ready(function () {
     }
   });
 
-  // Editar evento:
+  // ENVIA EL EVENTO EDITADO AL BACKEND:
   $("#btn-guardarEditEvento").click(function () {
     var titulo = $("#titulo").val();
     var descripcion = `${$("#summernote").summernote("code")}`;
@@ -359,10 +356,10 @@ $(document).ready(function () {
     }
   });
 
-  // slider active
+  // AÑADE LA CLASE ACTIVE AL SLIDER DE LA PAGINA PRINCIPAL:
   $("#sliderItem0").addClass("active");
 
-  // btn Agregar categoria...
+  // AGREGA UNA CATEGORIA AL FORMULARIO DE PUBLICACIONES:
   $("#btnAddCategoria").click(function () {
     var categoria = $("#categoriaModal").val();
     categoria = categoria[0].toUpperCase() + categoria.substring(1);
@@ -385,12 +382,9 @@ $(document).ready(function () {
     $("#cerrarModalCateg").click();
   });
 
-  // mostrar un mensaje u otro de acuerdo a la fecha del evento:
-
+  // MUESTRA SI EL EVENTO ESTA VIGENTE O NO EN LA PAGINA DEL EVENTO:
   const vigente = $("#vigente").val();
   const fecha = $("#fechaFormat").val();
-
-  // console.log(vigente);
 
   if (vigente == "true") {
     let massage = `
@@ -444,17 +438,10 @@ $(document).ready(function () {
     $("#card-fechas").append(massage);
   }
 
-
-  // SIDEBAR:
-  
+  // PERMITE OCULTAR O VISIBILIZAR EL MENU LATERAL DEL PANEL DE ADMINISTRACION:
   window.addEventListener("DOMContentLoaded", (event) => {
-    // Toggle the side navigation
     const sidebarToggle = document.body.querySelector("#sidebarToggle");
     if (sidebarToggle) {
-      // Uncomment Below to persist sidebar toggle between refreshes
-      // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-      //     document.body.classList.toggle('sb-sidenav-toggled');
-      // }
       sidebarToggle.addEventListener("click", (event) => {
         event.preventDefault();
         document.body.classList.toggle("sb-sidenav-toggled");
@@ -465,4 +452,6 @@ $(document).ready(function () {
       });
     }
   });
+
+  
 });

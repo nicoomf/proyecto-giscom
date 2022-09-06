@@ -1,6 +1,7 @@
 $(document).ready(function () {
   let contadorP = 0;
 
+  // AGREGA PROFESORES EN UNA LISTA EN EL FORMULARIO PARA CREAR AYUDANTES:
   $("#agregarProfesor").click(function () {
     $("#profesor option[value='default'").attr("selected", false);
 
@@ -46,6 +47,7 @@ $(document).ready(function () {
     return randomName;
   };
 
+  // AQUI SE CARGAN LAS FOTOS DE PERFIL:
   $(document).on("change", "#fotoPerfilAyud", function () {
     const image = document.querySelector("#fotoPerfilAyud").files[0];
 
@@ -102,6 +104,7 @@ $(document).ready(function () {
     }
   });
 
+  // ENVIA LOS DATOS AL BACKEND PARA CREAR UN AYUDANTE:
   $("#btn-GuardarAyud").click(function () {
     const frm = $("#formFPAyud");
 

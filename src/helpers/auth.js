@@ -2,6 +2,7 @@ const helpers = {};
 
 const Event = require("../models/Eventos");
 
+// AUTENTICA LOS USUARIOS:
 helpers.isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
@@ -13,7 +14,7 @@ helpers.isAuthenticated = (req, res, next) => {
   res.redirect("/admin/signin");
 };
 
-// Updatea constantemente los eventos expirados...
+// Updatea constantemente los eventos expirados... *OPCION 2 (ACTUALMENTE NO SE USA)*
 helpers.updateExpirados = async (req, res, next) => {
   const eventI = await Event.find({ vigente: true });
   // console.log("entro!");

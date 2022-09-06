@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // ENVIA AL BACKEND EL MENSAJE DEL EMAIL QUE SE QUIERE ENVIAR A LOS SUBS DEL EVENTO:
   for (let i = 0; i < 10; i++) {
     $(`#btnSendMail${i}`).click(function () {
       const mensaje = $(`#mensaje${i}`).val();
@@ -40,4 +41,13 @@ $(document).ready(function () {
       }
     });
   }
+
+  // BUSCA CONSTANTEMENTE CUANDO A UN EVENTO LE QUEDA MENOS DE UN DIA Y ENVIA UN RECORDATORIO:
+  (async () => {
+    $.ajax({
+      type: "POST",
+      url: `/admin/evento/send-reminder`,
+    });
+  })();
+
 });

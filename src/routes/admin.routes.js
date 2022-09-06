@@ -21,12 +21,11 @@ router.get('/admin/edit-admin/:id', auth.isAuthenticated, adminController.render
 router.put('/admin/edit-admin/:id', auth.isAuthenticated, adminController.updateAdmin);
 router.delete('/admin/delete-admin/:id', auth.isAuthenticated, adminController.deleteAdmin);
 
-// Subir archivos:
-router.get('/admin/subir-imagen', auth.isAuthenticated, uploadController.renderUpload);
-router.post('/admin/upload', auth.isAuthenticated, uploadController.saveUpload);
+// Subir archivos: *ESTO YA NO SE USA*
+// router.get('/admin/subir-imagen', auth.isAuthenticated, uploadController.renderUpload);
+// router.post('/admin/upload', auth.isAuthenticated, uploadController.saveUpload);
 // router.post('/admin/subir-imagen/save', auth.isAuthenticated, uploadController.saveUpload);
 
-// Admin Seccion de Equipo:
 // Investigadores:
 router.get('/admin/investigadores', auth.isAuthenticated, investController.renderAdminInvest);
 router.get('/admin/nuevo-invest', auth.isAuthenticated, investController.renderInvestForm);
@@ -34,6 +33,7 @@ router.post('/admin/save-invest', auth.isAuthenticated, investController.createI
 router.get('/admin/edit-invest/:id', auth.isAuthenticated, investController.renderEditInvest);
 router.put('/admin/edit-invest/:id', auth.isAuthenticated, investController.updateInvest);
 router.delete('/admin/delete-invest/:id', auth.isAuthenticated, investController.deleteInvest);
+
 // Ayudantes:
 router.get('/admin/ayudantes', auth.isAuthenticated, ayudController.renderAdminAyud);
 router.get('/admin/nuevo-ayud', auth.isAuthenticated, ayudController.renderAyudForm);
@@ -42,7 +42,6 @@ router.get('/admin/edit-ayud/:id', auth.isAuthenticated, ayudController.renderEd
 router.put('/admin/edit-ayud/:id', auth.isAuthenticated, ayudController.updateAyud);
 router.delete('/admin/delete-ayud/:id', auth.isAuthenticated, ayudController.deleteAyud);
 
-// Admin Seccion de Actividades:
 // Publicaciones:
 router.get('/admin/publicaciones', auth.isAuthenticated, activController.renderAdminPublicaciones);
 router.get('/admin/nueva-public', auth.isAuthenticated, activController.renderNuevaPublic);
@@ -52,7 +51,6 @@ router.put('/admin/edit-public/:id', auth.isAuthenticated, activController.updat
 router.delete('/admin/delete-public/:id', auth.isAuthenticated, activController.deletePublic);
 router.post('/addCategoria', auth.isAuthenticated, activController.addCategoria);
 
-
 //Eventos:
 router.get('/admin/eventos', auth.isAuthenticated, eventController.renderAdminEventos);
 router.get('/admin/nuevo-evento', auth.isAuthenticated, eventController.renderNuevoEvento);
@@ -61,5 +59,6 @@ router.get('/admin/edit-event/:id', auth.isAuthenticated, eventController.render
 router.put('/admin/edit-event/:id', auth.isAuthenticated, eventController.updateEvent);
 router.delete('/admin/delete-event/:id', auth.isAuthenticated, eventController.deleteEvent);
 router.post('/admin/evento/send-mail', auth.isAuthenticated, eventController.sendMailSubs);
+router.post('/admin/evento/send-reminder', eventController.sendMailReminder);
 
 module.exports = router;

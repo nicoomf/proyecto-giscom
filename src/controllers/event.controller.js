@@ -7,6 +7,7 @@ const { format } = require("date-fns");
 const mongoosePaginate = require("mongoose-paginate-v2");
 const emailer = require("../helpers/emails");
 
+// RENDERIZA LOS EVENTOS EN LA PAGINA PRINCIPAL:
 eventController.renderEventos = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const eventI = await Event.paginate(
@@ -22,11 +23,13 @@ eventController.renderEventos = async (req, res) => {
   res.render("actividades/eventos", { event, totalPages, page, ultPage });
 };
 
+// RENDERIZA LA PAGINA DE UN EVENTO:
 eventController.renderEvento = async (req, res) => {
   const event = await Event.findById(req.params.id);
   res.render("actividades/evento", { event });
 };
 
+// RENDERIZA LA LISTA DE EVENTOS EN EL PANEL DE ADMINISTRACION:
 eventController.renderAdminEventos = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const eventI = await Event.paginate(
@@ -47,17 +50,19 @@ eventController.renderAdminEventos = async (req, res) => {
   });
 };
 
+// RENDERIZA EL FORMULARIO PARA CREAR UN NUEVO EVENTO:
 eventController.renderNuevoEvento = (req, res) => {
   res.render("admin/actividades/nuevo-evento");
 };
 
+// GUARDA EL NUEVO EVENTO EN LA BASE DE DATOS:
 eventController.createEvento = async (req, res) => {
   try {
     const saveEvent = async () => {
       const eventUrl = randomUrl();
       const urls = await Event.find({ url: eventUrl });
       const correosI = await Subs.find();
-      // console.log(correosI);
+
       var correos = ``;
       for (let i = 0; i < correosI.length; i++) {
         const correo = correosI[i].email;
@@ -67,7 +72,7 @@ eventController.createEvento = async (req, res) => {
           correos = `${correos}, ${correo}`;
         }
       }
-      // console.log(correos);
+
       if (urls.length > 0) {
         saveEvent();
       } else {
@@ -110,6 +115,7 @@ eventController.createEvento = async (req, res) => {
   }
 };
 
+// RENDERIZA EL FORMULARIO PARA EDITAR UN EVENTO:
 eventController.renderEditEvento = async (req, res) => {
   const event = await Event.findById(req.params.id);
   fechaFormat = event.fechaFormat;
@@ -118,6 +124,7 @@ eventController.renderEditEvento = async (req, res) => {
   res.render("admin/actividades/edit-evento", { event, fechaG });
 };
 
+// ACTUALIZA LOS CAMBIOS DEL EVENTO EN LA BASE DE DATOS:
 eventController.updateEvent = async (req, res) => {
   const { titulo, descripcion, fecha, hora, breveDescrip, fechaG, horaG } =
     req.body;
@@ -127,8 +134,6 @@ eventController.updateEvent = async (req, res) => {
   const evento = await Event.findById(id).exec();
   const subsEvent = evento.subs;
 
-  // console.log(evento);
-  // console.log(subsEvent);
   var correos = ``;
   for (let i = 0; i < subsEvent.length; i++) {
     const correo = subsEvent[i].email;
@@ -138,8 +143,6 @@ eventController.updateEvent = async (req, res) => {
       correos = `${correos}, ${correo}`;
     }
   }
-
-  // console.log(correos);
 
   if (fecha.length !== 0) {
     const fechaArray = fecha.split("-");
@@ -191,11 +194,13 @@ eventController.updateEvent = async (req, res) => {
   }
 };
 
+// ELIMINA UN EVENTO:
 eventController.deleteEvent = async (req, res) => {
   await Event.findByIdAndDelete(req.params.id);
   res.redirect("/admin/eventos");
 };
 
+// ENVIA UN EMAIL A LOS SUSCRIPTORES DEL EVENTO:
 eventController.sendMailSubs = async (req, res) => {
   const { id, mensaje } = req.body;
 
@@ -214,13 +219,62 @@ eventController.sendMailSubs = async (req, res) => {
     }
   }
 
-  // console.log(correos);
-  // console.log(id);
-  // console.log(mensaje);
-  // console.log(titulo);
-
   if (correos != "") {
     emailer.sendMailForSubs(correos, mensaje, titulo);
+  }
+};
+
+// ENVIA UN RECORDATORIO AUTOMATICAMENTE POR EMAIL CUANDO QUEDA MENOS DE UN DIA PARA EL EVENTO:
+eventController.sendMailReminder = async (req, res) => {
+  const evento = await Event.find({ vigente: "true" });
+
+  for (let i = 0; i < evento.length; i++) {
+    const horaEvent = evento[i].hora;
+    const hora = horaEvent.split(":");
+    var fechaHoy = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate(),
+      hora[0],
+      hora[1]
+    );
+
+    const fechaEvento = evento[i].fecha;
+
+    let milisegundos = 24 * 60 * 60 * 1000;
+    let miliSegTrans = Math.abs(fechaHoy.getTime() - fechaEvento.getTime());
+
+    var diasFaltantes = Math.round(miliSegTrans / milisegundos);
+
+    if (diasFaltantes <= 1) {
+      const subsEvent = evento[i].subs;
+      const titulo = evento[i].titulo;
+
+      if (evento[i].recordatorio == false) {
+        if (subsEvent) {
+          var correos = ``;
+
+          for (let i = 0; i < subsEvent.length; i++) {
+            const correo = subsEvent[i].email;
+            if (correos == "") {
+              correos = `${correo}`;
+            } else {
+              correos = `${correos}, ${correo}`;
+            }
+          }
+
+          let id = evento[i].id;
+          let fecha = evento[i].fechaFormat;
+          let hora = evento[i].hora;
+
+          emailer.sendMailReminder(correos, titulo, id, fecha, hora)
+
+          await Event.findByIdAndUpdate(id, {
+            recordatorio: true,
+          });
+        }
+      }
+    }
   }
 };
 

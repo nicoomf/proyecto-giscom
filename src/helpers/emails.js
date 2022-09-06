@@ -7,6 +7,7 @@ const OAuth2 = google.auth.OAuth2;
 require("dotenv").config();
 // console.log(process.env);
 
+// TEMPLATE DE CORREOS PARTE INICIAL:
 const templateInicio = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="width:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0"> 
@@ -124,6 +125,7 @@ a[x-apple-data-detectors] {
                      <tr style="border-collapse:collapse"> 
                       <td class="es-m-txt-l" align="center" style="padding:0;Margin:0;padding-top:15px">`;
 
+// TEMPLATE DE CORREOS PARTE FINAL:
 const templateFinal = `</td> 
 </tr> 
 </table></td> 
@@ -189,6 +191,7 @@ const templateFinal = `</td>
 </body>
 </html>`;
 
+// AUTENTICACION CON LA API DE GMAIL PARA EL ENVIO DE CORREOS:
 const oauth2Client = new OAuth2(
   process.env.SM_CLIENTID,
   process.env.SM_CLIENTSECRET,
@@ -216,6 +219,7 @@ const createTrans = async () => {
   return transport;
 };
 
+// ENVIA UN EMAIL CUANDO SE SUSCRIBE UN USUARIO A LA PAGINA EN GENERAL:
 emails.sendMailSub = async (correo) => {
   // Titulo para el mensaje del email
   const titulo = `¡Hola!`;
@@ -236,6 +240,7 @@ emails.sendMailSub = async (correo) => {
   return;
 };
 
+// ENVIA UN EMAIL CUANDO SE SUSCRIBE UN USUARIO A UN EVENTO:
 emails.sendMailSubEvent = async (correo, nombre, apellido, evento) => {
   // Titulo para el mensaje del email
   const titulo = `¡Te Suscribiste!`;
@@ -252,6 +257,7 @@ emails.sendMailSubEvent = async (correo, nombre, apellido, evento) => {
   });
 };
 
+// ENVIA UN EMAIL A LOS SUSCRIPTORES DE LA PAGINA CUANDO SE CREA UNA NUEVA PUBLICACION:
 emails.sendMailNewPublic = async (correos, categoria, autor) => {
   // Titulo para el mensaje del email
   const titulo2 = `¡Se acaba de publicar una ${categoria}!`;
@@ -268,6 +274,7 @@ emails.sendMailNewPublic = async (correos, categoria, autor) => {
   });
 };
 
+// ENVIA UN EMAIL A LOS SUSCRIPTORES DE LA PAGINA CUANDO SE CREA UN EVENTO:
 emails.sendMailNewEvent = async (correos, titulo, fecha, hora) => {
   // Titulo para el mensaje del email
   const titulo2 = `¡Se acaba de publicar nuevo Evento!`;
@@ -284,6 +291,7 @@ emails.sendMailNewEvent = async (correos, titulo, fecha, hora) => {
   });
 };
 
+// ENVIA UN EMAIL A LOS SUSCRIPTORES DEL EVENTO CUANDO A ESTE SE LE CAMBIA LA FECHA O LA HORA:
 emails.sendMailUpdateEvent = async (correos, titulo, fecha, hora, id) => {
   // Titulo para el mensaje del email
   const titulo2 = `Tuvimos que hacer un cambio...`;
@@ -300,11 +308,29 @@ emails.sendMailUpdateEvent = async (correos, titulo, fecha, hora, id) => {
   });
 };
 
+// EMVIA UN EMAIL A LOS SUSCRIPTORES DE UN EVENTO CON EL MENSAJE QUE ESCRIBAN LOS INVESTIGADORES:
 emails.sendMailForSubs = async (correos, mensaje, evento) => {
   // Titulo para el mensaje del email
   const titulo2 = `Estimad@!`;
   //   Mensaje del email
   const mensaje2 = `<br>${mensaje}`;
+  const cuerpo = `<div><h2 style="color: #fff;">${titulo2}</h2><p style="color: #fff;">${mensaje2}</p></div>`;
+
+  const transporter = createTrans();
+  const info = (await transporter).sendMail({
+    from: "Grupo de Investigacion gISCOM <giscom-app@outlook.com>",
+    to: `${correos}`,
+    subject: `[Giscom] ${evento}`,
+    html: `${templateInicio} ${cuerpo} ${templateFinal}`,
+  });
+};
+
+// ENMVIA UN RECORDATORIO DEL EVENTO CUANDO A ESTE LE FALTA UN DIA PARA QUE SE REALICE:
+emails.sendMailReminder = async (correos, evento, id, fecha, hora) => {
+  // Titulo para el mensaje del email
+  const titulo2 = `Estimad@! Queda menos de un dia...`;
+  //   Mensaje del email
+  const mensaje2 = `<br>Te informamos que queda menos de un dia para el evento:<br>${evento}<br><br>Que se hará mañana: ${fecha} a las: ${hora} horas<br><br><a style="color: #fff;" href="https://giscom.herokuapp.com/actividades/eventos/${id}">Ir al evento en la página de Giscom</a>`;
   const cuerpo = `<div><h2 style="color: #fff;">${titulo2}</h2><p style="color: #fff;">${mensaje2}</p></div>`;
 
   const transporter = createTrans();

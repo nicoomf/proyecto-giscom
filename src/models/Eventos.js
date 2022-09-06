@@ -12,6 +12,7 @@ const eventoSchema = new Schema({
   hora: { type: String },
   breveDescrip: { type: String },
   vigente: { type: Boolean, default: true },
+  recordatorio: { type: Boolean, default: false },
   tipo: { type: String, default: "eventos" },
   subs: [
     {

@@ -6,19 +6,18 @@ const bcrypt = require('bcryptjs');
 
 const Admin = require("../models/Admin");
 
-// const matchPassword = async function(actualPassword, adminPassword) {
-//   return await bcrypt.compare(actualPassword, adminPassword);
-// };
-
+// RENDERIZA EL FORMULARIO PARA CREAR ADMINISTRADORES:
 adminController.renderSignUpForm = (req, res) => {
   res.render("admin/signup");
 };
 
+// RENDERIZA LOS ADMINISTRADORES CREADOS EN EL PANEL DE ADMINISTRACION:
 adminController.renderAdministradores = async (req, res) => {
   const admin = await Admin.find();
   res.render("admin/general/administradores", { admin });
 };
 
+// CREA UN ADMINISTRADOR EN LA BASE DE DATOS:
 adminController.signUp = async (req, res) => {
   const errors = [];
   const { name, email, password, confirm_password } = req.body;
@@ -47,6 +46,7 @@ adminController.signUp = async (req, res) => {
   }
 };
 
+// RENDERIZA EL FORMULARIO PARA EDITAR ADMINISTRADORES:
 adminController.renderEditAdminForm = async (req, res) => {
   const admin = await Admin.findById(req.params.id);
   res.render("admin/general/editadmin", { admin });
@@ -79,27 +79,32 @@ adminController.updateAdmin = async (req, res) => {
   }
 };
 
+// ELIMINA ALGUN ADMINISTRADOR:
 adminController.deleteAdmin = async (req, res) => {
   await Admin.findByIdAndDelete(req.params.id);
   res.redirect('/admin/administradores');
 }
 
+// RENDERIZA EL LOGIN:
 adminController.renderSignInForm = (req, res) => {
   res.render("admin/signin");
 };
 
+// AUTENTICA AL USUARIO:
 adminController.signIn = passport.authenticate("local", {
   failureRedirect: "/admin/signin",
   successRedirect: "/admin/panel",
   failureFlash: true,
 });
 
+// CIERRA LA SESION DEL USUARIO:
 adminController.logOut = (req, res) => {
   req.logout();
   req.flash("success_msg", "Cerraste Sesión");
   res.redirect("/admin/signin");
 };
 
+// RENDERIZA EL PANEL DE ADMINISTRACION:
 adminController.renderPanel = (req, res) => {
   res.render("admin/panel");
 };

@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  // SUSCRIBE A UN EVENTO:
   $("#btnSusEvento").click(function () {
     var email = $("#emailSub").val();
     var id = $("#idEvento").val();

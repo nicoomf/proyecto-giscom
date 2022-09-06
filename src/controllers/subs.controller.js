@@ -5,6 +5,7 @@ const Event = require('../models/Eventos');
 
 const emailer = require('../helpers/emails');
 
+// GUARDA UN SUSCRIPTOR DE UN EVENTO EN LA BASE DE DATOS:
 subsController.addSubs = async (req, res) => {
 
     const { email, nombre, apellido, id } = req.body;
@@ -22,6 +23,7 @@ subsController.addSubs = async (req, res) => {
     }
 };
 
+// GUARDA UN SUSCRIPTOR DE LA PAGINA EN GENERAL EN LA BASE DE DATOS:
 subsController.addSubsGeneral = async (req, res) => {
     const { email } = req.body;
 

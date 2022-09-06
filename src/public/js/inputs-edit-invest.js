@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  // AGREGA TITULOS EN UNA LISTA EN EL FORMULARIO PARA EDITAR INVESTIGADORES:
   $("#agregarTituloEdit").click(function () {
     let listaAnt = $("#lista_titulos").val();
     // console.log(listaAnt);
@@ -26,6 +28,7 @@ $(document).ready(function () {
     }
   });
 
+  // AGREGA AREAS EN UNA LISTA EN EL FORMULARIO PARA EDITAR INVESTIGADORES:
   $("#agregarAreaEdit").click(function () {
     let listaAnt = $("#lista_areas").val();
     // console.log(listaAnt);
@@ -65,7 +68,7 @@ $(document).ready(function () {
     return randomName;
   };
 
-  // cargar foto de perfil desde modal:
+  // AQUI SE CARGAN LAS FOTOS DE PERFIL:
   $(document).on("change", "#fotoPerfilEdit", function () {
     const image = document.querySelector("#fotoPerfilEdit").files[0];
 
@@ -123,7 +126,7 @@ $(document).ready(function () {
     }
   });
 
-  // Guardar edit de investigador:
+  // ENVIA LOS DATOS AL BACKEND PARA EDITAR UN INVESTIGADOR:
   $("#btn-guardarEdit").click(function () {
     const frm = $("#formFPEdit");
 
