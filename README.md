@@ -20,22 +20,22 @@ El proyecto ~~ GISCOM ~~ es una aplicación web que corre sobre el siguiente sof
 ## Configuraciones de Ejecución para Entorno de Desarrollo/Produccción
 
 ~~  
-    1.- Instalar NodeJS v16.16.0 LTS (o superior) de https://nodejs.org/es/
+    1. Instalar NodeJS v16.16.0 LTS (o superior) de https://nodejs.org/es/
 
-    2.- Realizar un git clone del repositorio: https://github.com/nicoomf/proyecto-giscom.git
+    2. Realizar un git clone del repositorio: https://github.com/nicoomf/proyecto-giscom.git
 
     ```bash
     git clone https://github.com/nicoomf/proyecto-giscom.git
     ```
 
-    3.- Abrir una consola en la raiz del proyecto clonado.
-    4.- Ejecutar el siguiente comando: 
+    3. Abrir una consola en la raiz del proyecto clonado.
+    4. Ejecutar el siguiente comando: 
 
     ```bash
     npm install
     ```
     
-    5.- Ejecutar el siguiente comando:
+    5. Ejecutar el siguiente comando:
 
     ```bash
     npm start
