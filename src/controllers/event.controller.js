@@ -171,7 +171,9 @@ eventController.updateEvent = async (req, res) => {
         horaG
       );
 
-      emailer.sendMailUpdateEvent(correos, titulo, fecha, hora, id);
+      if (correos != "") {
+        emailer.sendMailUpdateEvent(correos, titulo, fecha, hora, id);
+      }
     }
 
     await Event.findByIdAndUpdate(req.params.id, {
@@ -267,7 +269,7 @@ eventController.sendMailReminder = async (req, res) => {
           let fecha = evento[i].fechaFormat;
           let hora = evento[i].hora;
 
-          emailer.sendMailReminder(correos, titulo, id, fecha, hora)
+          emailer.sendMailReminder(correos, titulo, id, fecha, hora);
 
           await Event.findByIdAndUpdate(id, {
             recordatorio: true,
