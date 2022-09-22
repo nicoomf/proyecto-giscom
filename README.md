@@ -1,12 +1,10 @@
- ~~ Sistema de apoyo para la gestion web del grupo de investigacion GISCOM de la Universidad del Bio-Bio ~~
+~~Sistema de apoyo para la gestion web del grupo de investigacion GISCOM de la Universidad del Bio-Bio~~
 
-~~  
-   El proyecto esta diseñado para facilitar la gestion de las distintas actividades e investigaciones que realiza el grupo de investigacion Giscom.
-   Con funciones como realizar publicaciones de distintas categorias como noticias, proyectos de titulo, investigaciones, etc. O tambien el poder 
-   programar eventos como cursos, charlas o actividades que realicen como grupo y que el publico en general pueda suscribirse a dichas actividades y 
-   reciban correos automaticos como recordatorios, confirmacion de suscripcion o mensajes personalizados que envien los investigadores. Este proyecto
-   esta dirigido a todo tipo de publico que tenga interes en recibir informacion de las distintas areas en las que el grupo se especializa.
-~~
+~~El proyecto esta diseñado para facilitar la gestion de las distintas actividades e investigaciones que realiza el grupo de investigacion Giscom.~~
+~~Con funciones como realizar publicaciones de distintas categorias como noticias, proyectos de titulo, investigaciones, etc. O tambien el poder~~
+~~programar eventos como cursos, charlas o actividades que realicen como grupo y que el publico en general pueda suscribirse a dichas actividades y~~
+~~reciban correos automaticos como recordatorios, confirmacion de suscripcion o mensajes personalizados que envien los investigadores. Este proyecto~~
+~~esta dirigido a todo tipo de publico que tenga interes en recibir informacion de las distintas areas en las que el grupo se especializa.~~
 
 ## Software stack
 El proyecto ~~ GISCOM ~~ es una aplicación web que corre sobre el siguiente software:
