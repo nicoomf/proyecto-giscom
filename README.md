@@ -1,4 +1,4 @@
-Sistema de apoyo para la gestion web del grupo de investigacion GISCOM de la Universidad del Bío-Bío.
+## Sistema de apoyo para la gestion web del grupo de investigacion GISCOM de la Universidad del Bío-Bío.
 
 El proyecto esta diseñado para facilitar la gestion de las distintas actividades e investigaciones que realiza el grupo de investigacion Giscom. Con funciones como realizar publicaciones de distintas categorias como noticias, proyectos de titulo, investigaciones, etc. O tambien el poder programar eventos como cursos, charlas o actividades que realicen como grupo y que el publico en general pueda suscribirse a dichas actividades y reciban correos automaticos como recordatorios, confirmacion de suscripcion o mensajes personalizados que envien los investigadores. Este proyecto esta dirigido a todo tipo de publico que tenga interes en recibir informacion de las distintas areas en las que el grupo se especializa.
 
@@ -6,40 +6,37 @@ El proyecto esta diseñado para facilitar la gestion de las distintas actividade
 
 El proyecto ~~ GISCOM ~~ es una aplicación web que corre sobre el siguiente software:
 
-- ~~ Ubuntu 18.04.6 LTS (Bionic Beaver) ~~
-- ~~ PM2 5.2.0 ~~
-- ~~ NodeJS 16.16.0 ~~
-- ~~ MongoDB Atlas Cluster v5.0.12 ~~
-- ~~ ExpressJS 4.17.1 ~~
+- Ubuntu 18.04.6 LTS (Bionic Beaver)
+- PM2 5.2.0
+- NodeJS 16.16.0
+- MongoDB Atlas Cluster v5.0.12
+- ExpressJS 4.17.1
 
 ## Configuraciones de Ejecución para Entorno de Desarrollo/Produccción
 
-~~
-
 1.  Instalar NodeJS v16.16.0 LTS (o superior) de https://nodejs.org/es/
 
-    2. Realizar un git clone del repositorio: https://github.com/nicoomf/proyecto-giscom.git
+2. Realizar un git clone del repositorio: https://github.com/nicoomf/proyecto-giscom.git
 
-    ```bash
-    git clone https://github.com/nicoomf/proyecto-giscom.git
-    ```
+```bash
+git clone https://github.com/nicoomf/proyecto-giscom.git
+```
 
-    3. Abrir una consola en la raiz del proyecto clonado.
-    4. Ejecutar el siguiente comando:
+3. Abrir una consola en la raiz del proyecto clonado.
 
-    ```bash
-    npm install
-    ```
+4. Ejecutar el siguiente comando:
 
-    5. Ejecutar el siguiente comando:
+```bash
+npm install
+```
 
-    ```bash
-    npm start
-    ```
+5. Ejecutar el siguiente comando:
 
-    - PARA EJECUTAR CORRECTAMENTE EL PROYECTO DEBE CONTAR CON EL ARCHIVO .env EL CUAL PUEDE SER SOLICITADO AL DESARROLLADOR DEL PROYECTO \*
+```bash
+npm start
+```
 
-~~
+- PARA EJECUTAR CORRECTAMENTE EL PROYECTO DEBE CONTAR CON EL ARCHIVO .env EL CUAL PUEDE SER SOLICITADO AL DESARROLLADOR DEL PROYECTO.
 
 ### Credenciales de Base de Datos y variables de ambiente
 
