@@ -85,6 +85,6 @@ docker build -t giscom .
 ## Desarrollado por:
 
 - Nicolás Medina [LinkedIn](https://www.linkedin.com/in/nicoomf/) - Visita mi perfil de LinkedIn.
-- nicoomf@outlook.com [Email](nicoomf@outlook.com) - Contactame por Correo.
+- [nicoomf@outlook.com](nicoomf@outlook.com) - Contactame por Correo.
 - @Nicoomf [Instagram](https://www.instagram.com/nicoomf/) - Sigueme en Instagram.
 - @Nicoomf [Twitter](https://twitter.com/nicoomf) - Sigueme en Twitter.
