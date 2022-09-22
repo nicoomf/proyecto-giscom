@@ -81,3 +81,10 @@ docker build -t giscom .
 - [NPM](https://www.npmjs.com/) - utilizado para la gestion de paquetes de Node.
 - [Bootstrap 4](https://getbootstrap.com/docs/4.6/getting-started/introduction/) - framework para HTML, CSS y JavaScript.
 - [MongoDB Atlas](https://www.mongodb.com/es/atlas/database) - Base de datos NoSQL en la nube proporcionada por MongoDB.
+
+## Desarrollado por:
+
+- Nicolás Medina [LinkedIn](https://www.linkedin.com/in/nicoomf/) - Visita mi perfil de LinkedIn.
+- nicoomf@outlook.com [Email](nicoomf@outlook.com) - Contactame por Correo.
+- @Nicoomf [Instagram](https://www.instagram.com/nicoomf/) - Sigueme en Instagram.
+- @Nicoomf [Twitter](https://twitter.com/nicoomf) - Sigueme en Twitter.
