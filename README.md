@@ -59,7 +59,7 @@ docker build -t giscom .
 4. Ejecutar el siguiente comando para iniciar la imagen docker:
 
   ```bash
-  docker run --rm -ti -it -p 80:80 -v /Users/**añadir ruta donde se clono el proyecto**:/var/www/html giscom bash
+  docker run --rm -ti -it -p 80:80 -v /Users/*RUTA DEL PROYECTO*:/var/www/html giscom bash
   ```
 
 5. Instalar los paquetes de NodeJS con el siguiente comando:
